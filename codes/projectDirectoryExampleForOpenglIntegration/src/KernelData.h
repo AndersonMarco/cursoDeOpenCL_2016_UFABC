@@ -1,0 +1,125 @@
+#ifndef KernelData_h
+#define KernelData_h
+#include "commonOpenclfunctions.h"
+#include "errors.h"
+#include <CL/cl_gl.h>
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <GL/glx.h>
+#endif
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+typedef struct KernelData_struct{
+    /*private:*/
+    cl_context context;
+    cl_command_queue command_queue;
+    cl_program program;
+    cl_device_id device_id;
+    cl_kernel kernel;
+    
+    /**
+     *To know which constructor was call to create 
+     *the object, self information is used on destructor
+     */
+    int kernelCreatedFromAnotherKernel;
+
+} KernelData;
+
+/*private:*/
+    /**
+     * @brief Compile a opencl kernel  linking the kernel to self->kernel. 
+     * 
+     * @param srcKernel opencl code.
+     * @param functionOpencl opencl function that the cpu host call.
+     * @return 0 if the function execute whithout error and different of zero otherwise. Read error.h and cl.h for a error list.
+     */
+    int compileKernel__KernelData(KernelData *self,const char *srcKernel, const char *functionOpencl);
+
+   /**
+     * @brief Create self->context and self->command_queue from a cl_platform_id and. 
+     * The method is used by the class constructors    
+     * @param srcKernel opencl code.
+     * @param functionOpencl opencl function that the cpu host call.
+     * @return 0 if the function execute whithout error and different of zero otherwise. Read error.h and cl.h for a error list.
+     */
+    int auxForConstructor__KernelData(KernelData *self,cl_platform_id platforms, cl_device_id device_id);  
+
+/*public:*/
+    cl_device_id getDevice_id__KernelData(KernelData *self);
+    cl_context  getContext__KernelData(KernelData *self);
+    cl_kernel  getKernel__KernelData(KernelData *self);
+    cl_program getProgram__KernelData(KernelData *self);
+    cl_command_queue getCommand_queue__KernelData(KernelData *self);
+
+    /**
+     * @biref Constructor of  KernelData class with data/buffers shared between the OpenGL context    
+     * @param *srcKernel opencl code.
+     * @param *functionOpencl opencl function that the cpu(host) call.      
+     * @param platform opencl platform where the kernel will run.
+     * @param catchCode returns errors thrown by constructor. Returns 0 if the constructor execute whithout error and different of zero otherwise. Read error.h and cl.h for a error list.
+     */
+     KernelData* new_5__KernelData(char *srcKernel, const char* functionOpencl, cl_platform_id platform, cl_int *catchCode);
+
+    /**
+     * @brief  Useful for create kernels with data/buffers shared or kernels wit h signals/events shared     
+     * @param context opencl context, a context opencl created by a previus kernel. Kernels that share same context share data/buffers.
+     * @param command_queue opencl command_queue, a command_queue opencl created by a previus kernel. Kernels that share same command_queue share signals and events.
+     * @param device_id opencl device where kernelSrc run.
+     * @param *srcKernel opencl code.
+     * @param *functionOpencl opencl function that the cpu host call.
+     * @param catchCode returns errors thrown by constructor. Returns 0 if the constructor execute whithout error and different of zero otherwise. Read error.h and cl.h for a error list.
+     * @return struct created.
+     */
+    KernelData* new_4__KernelData(cl_context context, cl_command_queue command_queue,cl_device_id device_id,char *srcKernel, const char *functionOpencl,cl_int *catchCode);
+
+    /**
+     * @brief Useful for create kernels with data/buffers shared or kernels with signals/events shared. 
+     *
+     * @param context opencl context, a context opencl created by a previus kernel. Kernels that share same context share data/buffers.
+     * @param command_queue opencl command_queue, a command_queue opencl created by a previus kernel. Kernels that share same command_queue share signals and events.
+     * @param device_id opencl device where kernelSrc run.
+     * @param catchCode returns errors thrown by constructor. Returns 0 if the constructor execute whithout error and different of zero otherwise. Read error.h and cl.h for a error list.
+     * @return struct created.
+     */
+    KernelData* new_3__KernelData(cl_context context, cl_command_queue command_queue, cl_device_id device_id,cl_int *catchCode);
+    
+    /**
+     * @brief Constructor of  KernelData struct. 
+     * 
+     * @param platform_id opencl platform where the kernel will run.
+     * @param device_id opencl device where the kernel will run.
+     * @param catchCode returns errors thrown by constructor. Returns 0 if the constructor execute whithout error and different of zero otherwise. Read error.h and cl.h for a error list.
+     * @return struct created.
+     */    
+    KernelData* new_2__KernelData(cl_platform_id platforms, cl_device_id device_id,cl_int *catchCode);
+
+    /**
+     * @brief Constructor of  KernelData struct. 
+     * 
+     * @param *srcKernel opencl code.
+     * @param *functionOpencl opencl function that the cpu __KernelData(KernelData *self,)host) call.
+     * @param platform_id opencl platform where kernelSrc will run.
+     * @param device_id opencl device where kernelSrc will run.     
+     * @param catchCode returns errors thrown by constructor. Returns 0 if the constructor execute whithout error and different of zero otherwise. Read error.h and cl.h for a error list.
+     * @return struct created.
+     */    
+    KernelData* new__KernelData(char *srcKernel,const char* functionOpencl, cl_platform_id platforms, cl_device_id device_id,cl_int *catchCode);
+
+    /**
+     * @brief Destructor of KernelData struct. 
+     */
+    int release__KernelData(KernelData *self);
+
+
+#ifdef __cplusplus
+}
+#endif
+    
+
+#endif

@@ -1,0 +1,1 @@
+/home/kite/Downloads/node-v6.4.0-linux-x64/bin/node /home/kite/Downloads/node-v6.4.0-linux-x64/bin/diff2html -i file -o stdout  -- CMakeLists.txt.diff  > CMakeLists_txt.html 

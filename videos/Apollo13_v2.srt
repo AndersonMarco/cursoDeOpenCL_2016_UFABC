@@ -1,0 +1,67 @@
+﻿1
+00:00:02,420 --> 00:00:06,340
+OK, Houston, confirmem.
+Eu terminei as conversões cardânicas...
+
+2
+00:00:06,420 --> 00:00:09,740
+mas preciso que verifiquem a aritmética.
+
+3
+00:00:09,860 --> 00:00:14,340
+-OK, pode dizer, Jim.
+-O ângulo de calibração é menos dois.
+
+4
+00:00:14,540 --> 00:00:18,020
+<i>A rotação do módulo lunar é 355,57.</i>
+
+5
+00:00:18,220 --> 00:00:21,620
+<i>Inclinação.: 1678, correção.</i>
+
+6
+00:00:21,700 --> 00:00:24,620
+<i>Inclinação.: 167, 78.</i>
+
+7
+00:00:24,860 --> 00:00:27,260
+<i>Velocidade angular é 351,87.</i>
+
+8
+00:00:27,380 --> 00:00:28,900
+Espere. Estamos verificando.
+
+9
+00:00:28,980 --> 00:00:31,460
+<i>Estamos sem visibilidade
+em nosso campo estelar...</i>
+
+10
+00:00:31,540 --> 00:00:36,140
+<i>e se estes cálculos não estiverem certos,
+quem sabe aonde iremos parar.</i>
+
+11
+00:00:42,940 --> 00:00:44,660
+Parece correto, Controle.
+
+12
+00:00:44,740 --> 00:00:47,060
+-Tudo certo.
+-Correto.
+
+13
+00:00:47,220 --> 00:00:49,460
+-Está bom, Andy.
+-Vamos proceder.
+
+14
+00:00:49,580 --> 00:00:51,180
+<i>-Está correto.
+-lnsira-os, Freddo.</i>
+
+15
+00:00:51,260 --> 00:00:53,580
+<i>Desligue o IMU. Passe para SCS.</i>
+

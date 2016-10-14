@@ -1,0 +1,3 @@
+diff -cabB ../projectDirectoryExample/src/KernelData.h  ../projectDirectoryExampleForOpenglIntegration/src/KernelData.h 
+diff -b -c9000 ../projectDirectoryExample/src/KernelData.h  ../projectDirectoryExampleForOpenglIntegration/src/KernelData.h  > KernelData.h.diff 
+diff -u9000b  ../projectDirectoryExample/src/KernelData.h  ../projectDirectoryExampleForOpenglIntegration/src/KernelData.h  

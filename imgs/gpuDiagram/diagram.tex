@@ -1,0 +1,163 @@
+% Geometric representation of the sum 1/4 + 1/16 + 1/64 + 1/256 + ...
+% Author: Jimi Oke
+\documentclass[a4paper,landscape]{article}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[utf8]{inputenc}
+%\usepackage[hidelinks]{hyperref}
+
+
+\usepackage[TS1,T1]{fontenc}
+  \usepackage[utf8]{luainputenc}
+%\usepackage{luatex}
+\usepackage{luacode}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{epsf}
+\usepackage{graphics}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algpascal}
+\usepackage{tabularx}
+\usepackage{svg}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{epstopdf}
+
+
+\def\tabularxcolumn#1{m{#1}}
+\def\tabularccolumn#1{m{#1}}
+
+\usepackage[only,ninrm,elvrm,twlrm,fivrm,sixrm,sevrm,egtrm,egtit,tenrm,tenit,twlit,frtnrm]{rawfonts}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes.geometric,backgrounds,
+  positioning-plus,node-families,calc}
+\makeatletter
+\newdimen\multi@col@width
+\newdimen\multi@col@margin
+\newcount\multi@col@count
+\multi@col@width=0pt
+\pgfdeclareshape{datastore}{
+  \inheritsavedanchors[from=rectangle]
+  \inheritanchorborder[from=rectangle]
+  \inheritanchor[from=rectangle]{center}
+  \inheritanchor[from=rectangle]{base}
+  \inheritanchor[from=rectangle]{north}
+  \inheritanchor[from=rectangle]{north east}
+  \inheritanchor[from=rectangle]{east}
+  \inheritanchor[from=rectangle]{south east}
+  \inheritanchor[from=rectangle]{south}
+  \inheritanchor[from=rectangle]{south west}
+  \inheritanchor[from=rectangle]{west}
+  \inheritanchor[from=rectangle]{north west}
+  \backgroundpath{
+    %  store lower right in xa/ya and upper right in xb/yb
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathmoveto{\pgfpoint{\pgf@xa}{\pgf@ya}}
+    \pgfpathlineto{\pgfpoint{\pgf@xb}{\pgf@ya}}
+    \pgfpathmoveto{\pgfpoint{\pgf@xa}{\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{\pgf@xb}{\pgf@yb}}
+ }
+}
+\makeatother
+\tikzset{
+  basic box/.style = {
+    shape = rectangle,
+    align = center,
+    draw  = #1,
+    fill  = #1!25,
+    rounded corners},
+  header node/.style = {
+    font          = \strut\small\ttfamily,
+    text depth    = +3pt,
+    fill          = white,
+    draw},
+  header/.style = {%
+    inner ysep = +1.8em,
+    inner xsep = +1.5em,
+    append after command = {
+      \pgfextra{\let\TikZlastnode\tikzlastnode}
+      node [header node] (header-\TikZlastnode) at (\TikZlastnode.north) {#1}
+      node [span = (\TikZlastnode)(header-\TikZlastnode)]
+        at (fit bounding box) (h-\TikZlastnode) {}
+    }
+  },
+  hv/.style = {to path = {-|(\tikztotarget)\tikztonodes}},
+  vh/.style = {to path = {|-(\tikztotarget)\tikztonodes}},
+  fat blue line/.style = {ultra thick, blue}
+multicol/.code={%
+    \global\multi@col@count=#1\relax
+    \global\let\orig@pgfmatrixendcode=\pgfmatrixendcode
+    \global\let\orig@pgfmatrixemptycode=\pgfmatrixemptycode
+    \def\pgfmatrixendcode##1{\orig@pgfmatrixendcode%
+      ##1%
+      \pgfutil@tempdima=\pgf@picmaxx
+      \global\multi@col@margin=\pgf@picminx
+      \advance\pgfutil@tempdima by -\pgf@picminx
+      \divide\pgfutil@tempdima by #1\relax
+      \global\multi@col@width=\pgfutil@tempdima
+      \pgf@picmaxx=.5\multi@col@width
+      \pgf@picminx=-.5\multi@col@width
+      \global\pgf@picmaxx=\pgf@picmaxx
+      \global\pgf@picminx=\pgf@picminx
+      \gdef\multi@adjust@position{%
+        \setbox\pgf@matrix@cell=\hbox\bgroup
+        \hfil\hskip-\multi@col@margin
+        \hfil\hskip-.5\multi@col@width
+        \box\pgf@matrix@cell
+        \egroup
+      }%
+      \gdef\multi@temp{\aftergroup\multi@adjust@position}%
+      \aftergroup\multi@temp
+    }
+    \gdef\pgfmatrixemptycode{%
+      \orig@pgfmatrixemptycode
+      \global\advance\multi@col@count by -1\relax
+      \global\pgf@picmaxx=.5\multi@col@width
+      \global\pgf@picminx=-.5\multi@col@width
+      \ifnum\multi@col@count=1\relax
+       \global\let\pgfmatrixemptycode=\orig@pgfmatrixemptycode
+      \fi
+    }
+  }
+}
+\makeatother
+\begin{document}
+%emacsclient -nw -s /tmp/emacs1000/server
+%https://www.youtube.com/watch?v=Er1pM9suxvE
+%https://www.safaribooksonline.com/library/view/beautiful-architecture/9780596155780/ch11s02.html
+%Junketsu_no_Maria_BD_12-FULLHD.mkv
+%https://animesvision.com/episodios-legendados/2/download-assistir-online/453/junketsu-no-maria-blu-ray/0/0/
+\thispagestyle{empty}
+\begin{figure}[!h]
+  \center
+\begin{tikzpicture}[
+  font=\sffamily,
+  every matrix/.style={ampersand replacement=\&,column sep=0.5cm,row sep=0.1cm},
+  source/.style={draw,thick,rounded corners,fill=yellow!20,inner sep=.3cm},
+  memory/.style={draw,thick,rounded corners,fill=yellow!20,inner sep=.3cm, minimum width=5cm},
+  process/.style={draw,thick,circle,fill=blue!20},
+  decision/.style={draw,thick,diamond,fill=blue!20},
+  source2/.style={source,fill=blue!20},
+  source3/.style={source,fill=green!20},
+  datastore/.style={draw,very thick,shape=datastore,inner sep=.3cm},
+  dots/.style={gray,scale=2},
+  to/.style={->,>=stealth',shorten >=0pt,semithick, line width=.05cm, -, -triangle 90},
+  to2/.style={-,>=stealth',shorten >=-1pt,semithick, line width=.05cm, -, triangle 90-triangle 90},
+  every node/.style={align=center}]
+  \matrix{
+    \&   \node[source] (core01) {Core01}; \&  \node[source] (core10) {Core10}; \&  \node[source] (core02) {Core02}; \& \node[source] (core20) {Core20};  \\ 
+    \&|[multicol=3]| \node[memory](ram){Ram}; \\
+  }; 
+ 
+\end{tikzpicture}
+\label{fig:fluxogramaGrayScott}
+\end{figure} 
+\end{document}

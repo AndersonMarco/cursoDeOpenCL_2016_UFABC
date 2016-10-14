@@ -1,0 +1,141 @@
+﻿1
+00:00:00,090 --> 00:00:03,427
+Bom dia, estagiários!
+Hoje têm o 1º de vários desafios
+
+2
+00:00:03,719 --> 00:00:06,013
+em que as vossas equipas
+mostrarão os seus méritos.
+
+3
+00:00:06,096 --> 00:00:08,766
+Ao testarem um novo produto,
+uma série de Googlers
+
+4
+00:00:09,058 --> 00:00:11,518
+reportaram um bug que elimina o som.
+
+5
+00:00:11,602 --> 00:00:15,439
+Os dois milhões de linhas de código
+estão nos ficheiros fontes.
+
+6
+00:00:15,731 --> 00:00:17,858
+O vosso trabalho: Encontrar esse bug.
+
+7
+00:00:17,941 --> 00:00:19,651
+Muito bem, devíamos verificar os
+reports dos utilizadores.
+
+8
+00:00:19,735 --> 00:00:22,029
+- Fazer um scan aos logs.
+- Verificar as excepções que foram lançadas.
+
+9
+00:00:22,112 --> 00:00:24,782
+Começo sempre pela estratégia
+de como examinar o código.
+
+10
+00:00:25,074 --> 00:00:26,617
+Código, certo?
+
+11
+00:00:26,909 --> 00:00:29,870
+Então queremos algo
+para descobrir uma senha.
+
+12
+00:00:29,953 --> 00:00:32,122
+Talvez a resposta esteja na pergunta.
+Qualquer coisa a ver com "Bug" (insecto).
+
+13
+00:00:32,414 --> 00:00:33,290
+Eureca!
+
+14
+00:00:33,582 --> 00:00:35,709
+Insecto como uma mosca. "A Mosca".
+O Chetty é cinéfilo?
+
+15
+00:00:35,793 --> 00:00:36,960
+Goldblum!
+
+16
+00:00:37,294 --> 00:00:38,962
+Espanta-me que ainda nenhum de
+vocês tenha puxado pelos notebooks?
+
+17
+00:00:39,254 --> 00:00:44,051
+Concentrados a escrever essas algaraviadas que podem
+ser ou não úteis, mas garanto que estamos a dizer algo útil.
+
+18
+00:00:44,134 --> 00:00:47,471
+Procuramos um erro, não uma senha.
+São coisas diferentes.
+
+19
+00:00:47,763 --> 00:00:49,473
+Mantém a tua linha de pensamento.
+
+20
+00:00:50,766 --> 00:00:53,227
+Sê positivo.
+Vai, vai, vai.
+
+21
+00:00:53,310 --> 00:00:55,479
+Vamos à "mosca",
+porque foi onde ficámos.
+
+22
+00:00:55,771 --> 00:00:57,815
+- A Mosca voa e estamos a voar para lá.
+- Gostei dessa.
+
+23
+00:00:58,649 --> 00:01:01,151
+Andamos a zumbir lá perto!
+A mosca está por aí.
+
+24
+00:01:01,443 --> 00:01:04,571
+Não consigo tirar "mosca" da cabeça. Pensei em
+mosca, pensei em Lopez, e agora na Jennifer Lopez.
+
+25
+00:01:04,655 --> 00:01:05,989
+- Ela é uma mosca morta?
+- Supermosca!
+
+26
+00:01:06,281 --> 00:01:08,409
+Peso mosca. Peso para escavar.
+
+27
+00:01:08,492 --> 00:01:09,743
+Terramotos! California!
+
+28
+00:01:09,827 --> 00:01:12,079
+- É isso! Escreve! Anda, Anda!
+- Onde? Onde?
+
+29
+00:01:12,162 --> 00:01:13,747
+Por favor, parem com isso!
+
+30
+00:01:13,831 --> 00:01:16,250
+- Não, estamos a trabalhar!
+- Não, nós é que estamos!
+

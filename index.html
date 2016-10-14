@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/meu.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/github.css">
+       
+      
+        <script type="text/javascript"
+                src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.min.js">
+        </script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.min.css">
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+        <script type="text/javascript">
+            document.createElement('video');document.createElement('audio');document.createElement('track');
+        </script>
+        <style type="text/css">
+            .reveal .slides p.left {
+              text-align: left;
+            }
+            .reveal h2{
+              line-height: 1.0em;
+            }
+            video{
+                font-size: 10%;
+                font: inherit;
+            }
+         .tableCron{
+             border-collapse: collapse;
+             border: 2px solid black;
+         }
+         .tableCron td{
+             font-size:20px;
+             line-height:25px;
+             padding-top:10px;
+             padding-bottom:10px;
+             padding-left:5px;
+             padding-right:5px;
+             min-width:30px;
+             max-width:90000px;
+             border: 2px solid black;
+         }
+         .tableCron td.mark{
+             background-color:#5ff;
+             
+         }
+         .tableCron th{
+             font-size:20px;
+             line-height:25px;
+             padding-top:10px;
+             padding-bottom:10px;
+             min-width:30px;
+             text-align: center;
+             border: 2px solid black;
+         }
+         .crossOut .child{
+             position:absolute; 
+             display:block;
+             height:1px; 
+             background:black;
+         }
+       </style>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	   <script type="text/javascript" src="js/jquery.js"> </script>
+
+
+	</head>
+
+	<body >
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">                   
+				<section>
+                    <div style="top:-50%; position: absolute; right: 0px; border: 0px none; "> <img style="border: none; box-shadow: none;" src="imgs/capesLogo.svg"> </div>
+					<h1>Aprendendo OpenCL </h1>
+
+					<p>
+						<small> <a href="javascript: void(0)">Anderson Gonçalves Marco</a> / <a href="javascript: void(0)">anderson.marco@gmail.com</a></small>
+					</p>
+                    <p><small>Orientador: <a href="javascript: void(0)">Jerônimo C. Pellegrini </a> </small> </p>
+				</section>
+
+				<section class="initVideo">
+                    <h2>Tópicos</h2>
+                    <ul>
+                        <li>Introdução a programação paralela</li>
+                        <li>Historia das GPUs</li>
+                        <li>Preparando o ambiente de desenvolvimento</li>
+                        <li>Hello Word</li>
+                        <li>Estrategia de paralelização</li>
+                        <li>Preparando o ambiente de desenvolvimento para integração com OpenGL</li>
+                        <li>Integração com OpenGL</li>
+                        <li>Debug/Profilling</li>
+                    </ul>
+				</section>
+				<section>
+					<section data-background="#007777" >
+						<h2>Introdução a programação paralela</h2>
+      				</section>
+                    <section>
+						<h2>Oque é?</h2>
+						<p>
+                            Dividir um problema entre muitos programas.
+                        </p>
+					</section>
+                    <section>
+                        <h2>Por que isto aconteceu</h2>
+                        <p>A velocidade de comunicação entre os transistores de uma CPU esta atrelada a velcoidade da luz.</p>
+                    </section>
+                    <section>
+                        <h2>Por que isto aconteceu</h2>
+                        <table>
+                            <tr>
+                                <td>Cray X-MP/48</td> <td>Sun 2-50</td>
+                            </tr>
+                            <tr>
+                                <td> <img src="imgs/cray.jpg"> </td>                                 <td> <img  src="imgs/sun_2-50_1.png"> </td>
+                        </tr>
+                        <tr>
+                            <td> <p>Lançado: 1984 </p> <p>Preço: $15 milhões </p>   </td> <td> <p>Lançado: 1986</p> <p>Preço: $8.900</p> </td>
+                        </tr>
+                        </table>
+                    </section>
+
+                    <section>
+						<h2>Tipos</h2>
+						<p>
+                            <ul>
+                                <li>Memória compartilhada</li>
+                                <li>Memória distribuida</li>
+                            </ul>
+                        </p>
+					</section>
+                    <section>
+						<h2>Memória distribuida</h2>
+						<p>
+                            <video id="video0002" class="unicoPlay video-js vjs-default-skin"  data-autoplay controls preload="none" width="640" height="360"  >
+                                <source src="videos/Apollo13_v2.webm" type='video/webm' >/
+                                <track label="Portugues" kind="subtitles" srclang="pt" src="videos/Apollo13_v2.vtt" default>
+                        </video>
+                        <p class="fragment">
+                        </p> 
+
+                        </p>
+					</section>
+                    <section>
+                        <h2>Memória distribuida</h2>
+                        <p>
+                            <img  height="400" src="imgs/mdf-cluster-completed-cabling.jpg">
+                        </p>
+                    </section>
+                    <section>
+						<h2>Memória compartilhada</h2>
+						<p>
+                            <video id="video0003" class="unicoPlay video-js vjs-default-skin"  data-autoplay controls preload="none" width="640" height="360"  >
+                                <source src="videos/OsEstagiarios.webm" type='video/webm' />
+                                <track label="Portugues" kind="subtitles" srclang="pt" src="videos/OsEstagiarios.vtt" default>
+                        </video>
+                        <p class="fragment">
+                        </p> 
+                        </p>
+					</section>
+                    <section>
+                        	<h2>Memória compartilhada</h2>
+						    <p>
+                                <img  height="400" src="imgs/18mp8oswoyudkjpg.jpg">
+                            </p>
+                    </section>
+
+                    <section>
+                        <h2>A Excessão confirma a regra</h2>
+                        <p>O processor do PS3 usava a arquitetura de memória distribuida.</p>
+                        <p>
+                            <img style="width:70%; " src="imgs/45nm-cell-3.gif">
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Programando em paralelo sem precisar bibliotecas</h2>
+                        <p>Paralelizando a integral da função de Weierstrass entre -0.4 e 0.4.</p>
+                        <p><img height="400" src="codes/ex1CalcularIntegral/weierstrass.svg"></p>
+
+                    </section>
+                    <section>
+                        <h2>Função de Weierstrass</h2>
+                        <p>$$f(x)=\sum\limits_{n=0}^{\infty} \frac{1}{2^n} cos(3^n \pi x) $$ </p>
+                    </section>
+                    <section>
+                        <h2>Código do processo slave </h2>
+                        <p>slave.c</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/ex1CalcularIntegral/slave.c 
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Código do processo master </h2>
+                        <p>master.bash</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="bash">
+                            codes/ex1CalcularIntegral/master.bash 
+                        </code></pre>
+                        
+                    </section>
+                    <section>
+                        <h2>Observação</h2>
+                        <ul>
+                            <li>Compile <b>slave.c</b> com o comando: <br> gcc slave.c -o slave -lm</li>
+                            <li>Depois de criar o arquivo <b>master.bash</b> execute o comando: <br> chmod +x master.bash</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section data-background="#007777" >
+						<h2>Historia das GPUs</h2>
+      			    </section>
+                    <section>
+						<h2>Importancia das texturas e luzes em um game </h2>
+      			    </section>
+                    
+                    <section>
+					    <h2>Luzes</h2>
+                        <>
+      			    </section>
+
+                    <section >
+						<h2>Linha do tempo </h2>
+                        <p id="visualization"></p>
+                        <script type="text/javascript">
+                          // DOM element where the Timeline will be attached
+                          var container = document.getElementById('visualization');
+                          
+                          // Create a DataSet (allows two way data-binding)
+                          var items = new vis.DataSet([
+                              {id: 1, content: 'Apple2 <br> <img style="height:120px;" src="imgs/imgsTimeLine/apple2.jpg"> <br/> ', start: '1977-06', style:"margin-bottom:-1500px;",group: 1},
+                              {id: 2, content: 'IBM Graphics Controller <br> <img style="height:120px;" src="imgs/imgsTimeLine/ibmVGA.jpg">', start: '1985-04',group: 2},
+                              {id: 3,content: '1s PCs com jogos 3d <br> <img style="height:120px;" src="imgs/imgsTimeLine/quake.jpg">', start: '1995-04',group: 2},
+                              {id: 4, content: '<img style="height:120px;" src="imgs/imgsTimeLine/voodoo1.jpg">', start: '1996-06',group: 3},
+                             {id: 5, content: 'GoT de Placas de video <br> <table> <tr> <td> <img style="height:70px;" src="imgs/imgsTimeLine/nvidiaLogo.jpg"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/3dfx.jpg"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/ati-logo.jpg"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/matrox.png"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/s3.png"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/intel.png"> </td> </tr> </table>', start: '1997-04', end:'2000' ,group: 3},
+                             {id: 6, content: 'Voodoo 5 Vs Geforce 256', start: '1999-09' ,group: 3},
+                              {id: 7, content: 'GPGPU <br> Mark Harris', start: '2002-04', end: '2003-08', group: 4},
+                              {id: 8, content: 'Proto linguagens GPGPU <br> Lib Sh e BrookGPU', start: '2004-04', end: '2007-01', group: 4},
+                              {id: 9, content: '<img style="height:90px;" src="imgs/imgsTimeLine/cuda.png">', start: '2007-01', group: 5},
+                              {id: 10, content: '<img style="height:90px;" src="imgs/imgsTimeLine/opencl.png">', start: '2009-02', group: 5},
+                              {id: 11, content: '<img style="height:90px;" src="imgs/imgsTimeLine/altera_opencl.jpg">', start: '2013-10', group: 5},
+                              {id: 12, content: '<img style="height:90px;" src="imgs/imgsTimeLine/altera_opencl.jpg">', start: '2013-10', group: 5},
+                              {id: 13, content: '<img style="height:90px;" src="imgs/imgsTimeLine/vulkan.jpg">', start: '2016-02', group: 6},
+                              {id: 14, content: '<img style="height:90px;" src="imgs/imgsTimeLine/spir.svg">', start: '2016-02', group: 6},
+                              {id: 15, content: '<img style="height:90px;" src="imgs/imgsTimeLine/directx12.png">', start: '2015-08', group: 6}
+                          ]);
+
+                             var groups=new vis.DataSet([
+                                 {id:1,content:"dispositivos <br> burros"},
+                                 {id:2,content:"placas 2d"},
+                                 {id:3,content:"placas 3d"},
+                                 {id:4,content:"GPUs com <br> shader"},
+                                 {id:5,content:"GPUs com <br> shader <br> generico"},
+                                 {id:6,content:"APIs de <br> baixo nível"}
+                             ]) 
+                          // Configuration for the Timeline
+                          var options = {
+                              height:"500px",                             
+                              format88: {
+                                  minorLabels: {
+                                      millisecond:'',
+                                      second:     '',
+                                      minute:     '',
+                                      hour:       '',
+                                      weekday:    '',
+                                      day:        '',
+                                      month:      '',
+                                      year:       'YYYY'
+                                  },
+                                  majorLabels: {
+                                      millisecond:'',
+                                      second:     '',
+                                      minute:     '',
+                                      hour:       '',
+                                      weekday:    '',
+                                      day:        '',
+                                      month:      'YYYY',
+                                      year:       'YYYY'
+                                  }
+                              },
+                              start:"1977",
+                              end: "1980"
+                          };
+                          
+                          // Create a Timeline
+                          var timeline = new vis.Timeline(container, items,groups, options);
+</script>
+
+      			    </section>
+                    
+                </section>
+                <section>
+                    <section>
+					    <h2>CMAKE</h2>
+                        <p> Um gerador de scripts de compilação.</p>
+      			    </section>
+                    <section>
+					    <h2>CMAKE</h2>
+                        <p> Um script cmake pode gerar:</p>
+                        <p>
+                            <ul>
+                                <li> Projeto para Visual Studio (Windows). </li>
+                                <li> Scripts makefile (Linux). </li>
+                                <li> Projeto para Xcode (Mac OS X). </li>
+                            </ul>
+                        </p>
+      			    </section>
+                    <section>
+					    <h2>CMAKE</h2>
+                        <p> A unica dependência é um compilador C++. Caso queira habilitar a interface gráfica do Cmake será necessário a biblioteca QT.</p>
+      			    </section>
+                    <section>
+					    <h2>CMAKE</h2>
+                        <p> Faça seus scripts de compilação uma vez e os debug em todos os lugares.</p>
+      			    </section>
+                    <section>
+					    <h2>Scripts de CMAKE</h2>
+                        <p>CmakeLists.txt</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="Cmake">
+codes/projectDirectoryExample/CMakeLists.txt
+                        </code></pre>  
+                        
+      			    </section>
+                    
+                    <section>
+					    <h2>Scripts de CMAKE</h2>
+                        <p>CMakePostBuildCommands.cmake</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="CMAKE">
+codes/projectDirectoryExample/CMakePostBuildCommands.cmake
+                        </code></pre>  
+                        
+      			    </section>
+                    
+                    <section>
+                        <h2>Preparando ambiente</h2>
+                        <p>Colocar ambos os scripts CMAKE na pasta raiz do projeto.</p>                        
+                    </section>
+                    
+                    <section>
+                        <h2>Scripts para limpar o projeto (opcional)</h2>
+                        <ul>
+                            <li> clean.py </li>
+                            <li> clean.bat </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Scripts para limpar o projeto </h2>
+                        <p>clean.py</p>
+                        <pre style="height:400px;"> <code style="margin-top:-3%; min-height:400px;" class="python">
+codes/projectDirectoryExample/clean.py
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Scripts para limpar o projeto </h2>
+                        <p>clean.bat</p>
+                        <pre style="height:400px;"> <code style="margin-top:-3%; min-height:400px;" class="bat">
+
+codes/projectDirectoryExample/clean.bat
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Scripts para limpar o projeto </h2>
+                        <p> Coloque os scripts <b>clean.bat</b> e <b>clean.py</b> na pasta raiz do projeto.</p>
+                    </section>
+                    <section>
+                        <h2>Diretorio src </h2>
+                        <p> Crie o diretorio src. Nele ficaram os códigos fonte além de outros arquivos de recursos.</p>
+                    </section>
+                    <section>
+                        <h2>Diretorio src/openclCodes </h2>
+                        <p> Os arquivos com códigos para serem executados na gpu ficaram no diretório <b>openclCodes</b> que é um subdiretorio de <b>src</b>.</p>
+
+                    </section>
+                    <section>
+                        <h2>Crie o diretorio src/whereami</h2>
+                        <p> Crie o diretorio <b>whereami</b> dentro do diretório <b>src</b>. Cole neste diretorio os arquivos <b>whereami.c</b> e <b>whereami.h</b>.</p>
+                        <p>O <b>whereami</b> é uma bibloteca, distruida no formato codigo fonte, que permite um programa em C saber em que diretorio esta o executavel. Esta bibloteca é muito útil para programa acessar arquivos que contem informações para sua execução, como arquivos <b>*.cl</b>. </p>
+                        <p><a href="https://github.com/gpakosz/whereami">Site do criador da bibloteca </a></p>
+                    </section>
+                    <section>
+                        <h2>Whereami</h2>
+                        <p> whereami.h </p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+codes/projectDirectoryExample/src/whereami/whereami.h
+
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Whereami</h2>
+                        <p> whereami.c </p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+
+codes/projectDirectoryExample/src/whereami/whereami.c
+                        </code></pre>
+                    </section>
+
+                    
+                    
+                    <section>
+                        <h2>Códigos auxiliares</h2>
+                        <p><b>KernelData.h, KernelData.c, errors.h, errors.c, commonOpenclfunctions.c, commonOpenclfunctions.h, commonFunctions.c e commonFunctions.h </b> ajudam na hora de se trabalhar com opencl. </p>
+                    </section>
+                    <section>
+                        <h2>KernelData</h2>
+                        <p> KernelData.h </p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+
+codes/projectDirectoryExample/src/KernelData.h
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>KernelData</h2>
+                        <p> KernelData.c </p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+
+codes/projectDirectoryExample/src/KernelData.c
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>errors</h2>
+                        <p> errors.h </p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+
+codes/projectDirectoryExample/src/errors.h
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>errors</h2>
+                        <p> errors.c </p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+
+codes/projectDirectoryExample/src/errors.c
+                        </code></pre>
+                    </section>
+                    
+                    <section>
+                        <h2>commonOpenclfunctions</h2>
+                        <p> commonOpenclfunctions.h </p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+
+codes/projectDirectoryExample/src/commonOpenclfunctions.h
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>commonOpenclfunctions</h2>
+                        <p> commonOpenclfunctions.c </p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+
+codes/projectDirectoryExample/src/commonOpenclfunctions.c
+                        </code></pre>
+                    </section>
+                    
+
+                    <section>
+                        <h2>commonFunctions</h2>
+                        <p> commonFunctions.h </p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+
+codes/projectDirectoryExample/src/commonFunctions.h
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>commonFunctions</h2>
+                        <p> commonFunctions.c </p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+
+codes/projectDirectoryExample/src/commonFunctions.c
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Ambiente pronto</h2>
+                        <p><img src="imgs/openclDirectory.png"> </p>
+                        <p><a href="codes/projectDirectoryExample.zip">Click aqui para download</a></p>
+                    </section>
+                </section>
+                <section>
+                    <section data-background="#007777" >
+					    <h2>Hello word</h2>
+      			    </section>
+                    <section>
+                        <h2>main</h2>
+                        <p>Coloque o arquivo <b>main.c</b> no diretorio <b>src</b> do seu projeto</p>
+                    </section>
+                    <section>
+                        <h2>main</h2>
+                        <p>main.c</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/helloWord/src/main.c 
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Kernel opencl</h2>
+                        <p>Coloque o arquivo add.cl no diretorio <b>src/openclCodes</b> do seu projeto</p>
+                    </section>
+                    <section>
+                        <h2>Kernel opencl</h2>
+                        <p>add.cl</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/helloWord/src/openclCodes/add.cl 
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Compilando</h2>
+                        <p>No Linux use o comando <b>cmake .</b>, no diretório do projeto, para gerar o makefile. Depois use o comando <b>make</b> para compilar. O diretorio <b>build</b> será gerado no diretório do projeto possuindo um arquivo executavel com mesmo nome do diretorio do projeto, este é o executavel gerado a partir do <b>main.c</b>.</p>
+                    </section>
+                    <section>
+                        <h2>Compilando</h2>
+                        <p>No Windows ou no Mac OS X você deve abrir a interface gráfica do CMAKE e gerar um projeto Visual Studio/Xcode.</p>
+                    </section>
+                    
+                    <section>
+                        <h2>Arquitetura da GPU</h2>
+                        <img src="imgs/gpuDiagram/diagram.svg">
+                    </section>                
+                </section>
+                <section>
+                    <section data-background="#007777"">
+                        <h2>Estratégias de paralelização</h2>
+                    </section>
+                    <section>
+                        <h2>Paralelizando for's</h2>
+                        <p>O código a seguir soma dois vetores de qualquer tamanho usando uma quantidade fixa de processos.</p>
+                    </section>
+                    <section>
+                        <h2>Soma de vetores</h2>
+                        <p>main.c</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/helloWordV2/src/main.c
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Soma de vetores</h2>
+                        <p>add.cl</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/helloWordV2/src/openclCodes/add.cl 
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Structs e funções</h2>
+                        <p>Vamos pegar um vetor de números complexos V e criar um kernel opencl que retorno V^2.</p>
+                    </section>
+                    <section>
+                        <h2>Structs e funções</h2>
+                        <p>main.c</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/structsAndFunctions/src/main.c
+                        </code></pre>
+
+                    </section>
+
+                    <section>
+                        <h2>Structs e funções</h2>
+                        <p>complexSquared.cl</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/structsAndFunctions/src/openclCodes/complexSquared.cl 
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Usando shared memory</h2>
+                        <p>Ela é mais rápida que a memória de textura. Útil para paralelizae grupos de processos.</p>
+                        <p>Exemplo de multiplicação de matrizes ilustrando o uso da shared memory</p>
+                    </section>
+                    <section>
+                        <h2>Multiplicação de matrizes</h2>
+                        <p>main.c</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/matrixMulSharedMemory/src/main.c
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Multiplicação de matrizes</h2>
+                        <p>matmul.cl</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/matrixMulSharedMemory/src/openclCodes/matmul.cl
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Barrier</h2>
+                        <p>Sincroniza apenas processos dentro de um grupo local.</p>
+                        <p><b>CLK_GLOBAL_MEM_FENCE</b> usado quando o processos que queremos sincronizar lêem/escrevem na memória global. </p>
+                        <p><b>CLK_LOCAL_MEM_FENCE</b> usado quando o processos que queremos sincronizar lêem/escrevem na shared memory. </p>
+                    </section>
+                    <section>
+                        <h2>Trabalhando com ponteiros dentro do kernel</h2>
+                        <p>Ponteiros do kernel tem qualificadores de acesso.</p>
+                        <p>Fique atento com o qualificador quando você faz atribuição de endereços de memória entre ponteiros.</p>
+                    </section>
+                    <section>
+                        <h2>Trabalhando com ponteiros dentro do kernel</h2>
+                        <p>Jeito errado para atribuição de endereços de memoria entre ponteiros.</p>
+                        <pre style="height:300px;"><code style="min-height:300px;" class="cpp">
+                            codes/ponteirosOpencl/jeitoErrado1.cl
+                        </code></pre>
+
+                    </section>
+                    <section>
+                        <h2>Trabalhando com ponteiros dentro do kernel</h2>
+                        <p>Jeito certo para atribuição de endereços de memoria entre ponteiros.</p>
+                        <pre style="height:300px;"><code style="min-height:300px;" class="cpp">
+                            codes/ponteirosOpencl/jeitoCerto1.cl
+                        </code></pre>
+
+                    </section>
+
+                    <section>
+                        <h2>Trabalhando com ponteiros dentro do kernel</h2>
+                        <p>Jeito errado para atribuição de endereços de memoria entre ponteiros.</p>
+                        <pre style="height:300px;"><code style="min-height:300px;" class="cpp">
+                            codes/ponteirosOpencl/jeitoErrado2.cl
+                        </code></pre>
+
+                    </section>
+                    <section>
+                        <h2>Trabalhando com ponteiros dentro do kernel</h2>
+                        <p>Jeito certo para atribuição de endereços de memoria entre ponteiros.</p>
+                        <pre style="height:300px;"><code style="min-height:300px;" class="cpp">
+                            codes/ponteirosOpencl/jeitoCerto2.cl
+                        </code></pre>
+
+                    </section>
+
+                </section>
+                <section>
+                    <section data-background="#007777">
+                        <h2>Preparando o ambiente de desenvolvimento para integração com OpenGL.</h2>
+                    </section>
+                    <section>
+                        <h2>Mudar para C++</h2>
+                        <p>Para simplificar algumas coisas, vamos utilizar uma biblioteca C++ chamada GLM.</p>
+                        <p>O GLM são um conjuntos de rotinas, em arquivos <b>*.hpp</b>, que facilitam na hora de se trabalhar com transformações geométricas.</p>
+                    </section>
+                    <section>
+                        <h2>O OpenGL já não implementa isto?</h2>
+                        <p>Na forma com que vamos usar o OpenGL ele não implementa nada.</p>
+                        <p>Nos vamos usar o OpenGL do desktop como se fosse o OpenGL do celular (OpenGL ES), o motivo disto e que queremos ter um controle maior sobre a GPU.</p>
+                    </section>
+                    <section>
+                        <h2>Diagrama de uma projeção</h2>
+                        <p><img src="imgs/perspective_Projection_Principle.jpg"> </p>
+                    </section>                
+                    <section>
+                        <h2>Como o OpenGL manipula a camera</h2>
+
+                        <video id="video0004" class="unicoPlay video-js vjs-default-skin"  data-autoplay controls preload="none" width="640" height="360"  >
+                            <source src="videos/futuramaOpenGL.webm" type='video/webm' />
+                        </video>
+                        
+                        <p class="fragment">
+                        </p> 
+                        
+                    </section>
+                    <section>
+                        <h2>Adicionar diretivas de compilação</h2>
+                        <p> É preciso colocar a diretiva de compilação <b>extern "C" { } </b>  em todos os arquivos *.h do diretório <b>src</b>.</p>
+                    </section>
+                    <section>
+                        <h2>Modificar ambiente do projeto</h2>
+                        <p>Arquivos que terão grandes modificações</p>
+                        <ul>
+                            <li><b>KernelData.h</b> e <b>KernelData.c </b> : adicionada uma nova função, os ponteiros <b>this</b> foram renomeados para <b>self</b></li>
+                            <li><b>errors.h</b> : adicionado um novo código de erro</li>
+                            <li><b>CMAKELists.txt</b> e <b>CMakePostBuildCommands.cmake</b>  : adicionado diretivas para compilar com OpenGL</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Manipular shaders</h2>
+                        <p>Adicionado os arquivos e pastas:</p>
+                        <ul>
+                            <li> <b>shader_utils.c </b> e <b>shader_utils.h</b>:  Contem rotinas para manipular shaders.</li>
+                            <li><b>shaders</b>: diretório com os fontes dos shaders. </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Compilação no windows</h2>
+                        <p>Adicionado os arquivos e pastas:</p>
+                        <ul>
+                            <li> <b>artefacts </b> :  Contem dlls e bibliotecas C++, útil apenas  para rodar os códigos no Windows.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Rotinas para trabalhar com imagens</h2>
+                        <p>Adicionado os arquivos  <b>functionsForPPMImages.c</b> e </b>functionsForPPMImages.h</b>. Estes arquivos contêm uma função para abrir uma imagem em formato <b>PPM</b>.</p>
+                    </section>
+                    <section>
+                        <h2>Ambiente pronto</h2>
+                        <p><img height="400" src="imgs/openclDirectory2.png"> </p>
+                        <p><a href="codes/projectDirectoryExampleForOpenglIntegration.zip">Click aqui para download</a></p>
+                    </section>
+
+                </section>
+                <section>
+                    <section data-background="#007777">
+                        <h2>Integração com OpenGL</h2>
+                    </section>
+                    <section>
+                        <h2>Main</h2>
+                        <p>main.cpp</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/openclIntegration/src/main.cpp 
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>functionsForPPMImages</h2>
+                        <p>functionsForPPMImages.h</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/openclIntegration/src/functionsForPPMImages.h
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>functionsForPPMImages</h2>
+                        <p>functionsForPPMImages.c</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/openclIntegration/src/functionsForPPMImages.c
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>vertex shader</h2>
+                        <p>shaders/cube.v.glsl</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/openclIntegration/src/shaders/cube.v.glsl 
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>fragment shader</h2>
+                        <p>shaders/cube.f.glsl</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/openclIntegration/src/shaders/cube.f.glsl 
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>shader_utils</h2>
+                        <p>shader_utils.h</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/openclIntegration/src/shader_utils.h
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>shader_utils</h2>
+                        <p>shader_utils.c</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/openclIntegration/src/shader_utils.c
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Oque mudou em CMAKELists.txt</h2>
+                        <iframe src="codes/diffProjectDirectoryExampleAndprojectDirectoryExampleForOpenglIntegration/CMakeLists_txt.html" style="min-width: 100%; height: 500px;"> </iframe>
+                    </section>
+                    <section>
+                        <h2>Oque mudou em CMakePostBuildCommands.cmake</h2>
+                        <iframe src="codes/diffProjectDirectoryExampleAndprojectDirectoryExampleForOpenglIntegration/CMakePostBuildCommands_cmake.html" style="min-width: 100%; height: 500px;"> </iframe>
+                    </section>
+                    <section>
+                        <h2>Oque mudou em KernelData.h</h2>
+                        <iframe src="codes/diffProjectDirectoryExampleAndprojectDirectoryExampleForOpenglIntegration/kernelData_h.html" style="min-width: 100%; height: 500px;"> </iframe>
+                    </section>
+                    <section>
+                        <h2>Oque mudou em KernelData.c</h2>
+                        <iframe src="codes/diffProjectDirectoryExampleAndprojectDirectoryExampleForOpenglIntegration/KernelData_c.html" style="min-width: 100%; height: 500px;"> </iframe>
+                    </section>
+                </section>
+                <section>
+                    <section data-background="#007777">
+                        <h2>Ponto fixo</h2>
+                    </section>
+                    <section>
+                        <h2>Oque é</h2>
+                        <p>Tecnica para representar números reais em inteiros.</p>
+                        <p><img style="vertical-align: middle; width:80%; border: none; background: none; margin: 0px; box-shadow: none;" src="imgs/pontoFixoCon.png"></p>
+                    </section>
+
+                    <section>
+                        <h2>Operações</h2>
+                         <ul class="op" style="padding-bottom:60px;">
+                             <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow> <mi>a</mi><mo>&#x022C6;</mo><mi>b</mi><mo>=</mo><mrow> <mo rspace="0.3em" lspace="0em" stretchy="true" fence="true" form="prefix">&#x0230A;</mo> <mfrac linethickness="1"><mrow><mi>a</mi><mi>b</mi></mrow><mrow><msup><mn>2</mn><mi>&#x003BB;</mi></msup></mrow></mfrac><mo rspace="0em" lspace="0.3em" stretchy="true" fence="true" form="postfix">&#x0230B;</mo></mrow></mrow></math> </li>
+                             <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>&#x000F7;</mo><mi>b</mi><mo>=</mo><mrow><mo rspace="0.3em" lspace="0em" stretchy="true" fence="true" form="prefix">&#x0230A;</mo><mfrac linethickness="1"><mrow><mi>a</mi><msup><mn>2</mn><mi>&#x003BB;</mi></msup></mrow><mi>b</mi></mfrac><mo rspace="0em" lspace="0.3em" stretchy="true" fence="true" form="postfix">&#x0230B;</mo></mrow></mrow></math></li>
+                             <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac linethickness="1"><mi>a</mi><mrow><msup><mn>2</mn><mi>&#x003BB;</mi></msup></mrow></mfrac>  <mo>&#x02248;</mo> <mi>r</mi></mrow></math> </li>
+                             <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo rspace="0.3em" lspace="0em" stretchy="true" fence="true" form="prefix">&#x0230A;</mo><mi>r</mi><msup><mn>2</mn><mi>&#x003BB;</mi></msup><mo rspace="0em" lspace="0.3em" stretchy="true" fence="true" form="postfix">&#x0230B;</mo></mrow> <mo>=</mo> <mi>a</mi></mrow></math></li>
+                         </ul>
+                         <p><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix">(</mo><mi>a</mi><mo>&#x022C6;</mo><mi>b</mi><mo form="postfix">)</mo></mrow><mo>&#x022C6;</mo><mi>c</mi><mo>&#x02248;</mo><mi>a</mi><mo>&#x022C6;</mo><mrow><mo form="prefix">(</mo><mi>b</mi><mo>&#x022C6;</mo><mi>c</mi><mo form="postfix">)</mo></mrow></mrow></math>, mas  <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix">(</mo><mi>a</mi><mo>&#x022C6;</mo><mi>b</mi><mo form="postfix">)</mo></mrow><mo>&#x022C6;</mo><mi>c</mi><mo>&#x02260;</mo><mi>a</mi><mo>&#x022C6;</mo><mrow><mo form="prefix">(</mo><mi>b</mi><mo>&#x022C6;</mo><mi>c</mi><mo form="postfix">)</mo></mrow></mrow></math> </p>
+                     </section>
+                     <section>
+                         <h2>Operações</h2>
+                         <p>fixedPoint.cl</p>
+                         <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/fixedPoint/src/openclCodes/fixedPoint.cl 
+                        </code></pre>
+
+                     </section>
+                     <section>
+                         <h2>Implementando as funções matemáticas comuns</h2>
+                         <p>Para isto vamos utilizar o algoritmo CORDIC.</p>
+                         <p>Planilha Libre Calc com o CORDIC implementado <a href="planilhaCordic.ods">clique aqui</a>. </p>
+                    </section>
+                    <section>
+                        <h2>Algoritmo para logaritmo</h2>
+                        
+                        <p style="text-align:left;"> \( \ln a=b \Longleftrightarrow e^{b}=a\) </p>
+                        <p style="text-align:left;">Com uma tabela de \( e^{x} \) procure os \( e^{i} \) onde \( \sum e^{i} \approx a \) </p>
+                        
+                    </section>
+                    <section>
+                        <h2>Algoritmo para exponenciação</h2>
+                        
+                        <p style="text-align:left;"> Lembre-se que \( e^{b}+e^{c} = e^{b+c}\)</p>
+                        <p style="text-align:left;"> Com uma tabela de \( e^{x} \) procure os \( e^{i} \) onde \( \sum i \approx x \)</p>
+                        
+                    </section>
+                    <section>
+                        <h2>Algoritmo para raiz quadrada</h2>
+                        
+                        <p style="text-align:left;"> Encontre um \(t\) tal que \((xt)^2=x\).</p>
+                        <p style="text-align:left;"> Para valores muito pequenos de deve-se evitar underflow. Para isto lembre-se da propriedade \( \frac{\sqrt{xy}}{\sqrt{y}}=\sqrt{x} \)</p>
+                        <p>OBS: Este Algoritmo não precisa de tabela. </p>
+                    </section>
+                    
+                    <section>
+                        <h2>Algoritmo para seno e cosseno</h2>
+                        
+                        <p style="text-align:left;">Uma rotação pode ser divida em uma soma de rotações.</p>
+                        <p style="text-align:left;">Sen(x) significa o valor do seno para o angulo x.</p>
+                        <p style="text-align:left;"> A partir de uma tabela de senos e cossenos faça rotações  no vetor \( \vec{v} \) até chegar no angulo desejado. O valor inicial para  \( \vec{v} \) é \([0,1] \), o valor final de \( v_1 \) corresponde ao seno  e o valor final de \( v_2 \) é o cosseno.</p>
+                    </section>
+                </section>
+		    </div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+                <script type="text/javascript">
+         String.prototype.replaceAll = function(target, replacement) {
+            return this.split(target).join(replacement);
+         };
+        
+        </script>
+
+		<script>
+            function loadCodes(){
+                var codes=$("code");
+                for(var i=0;i<codes.length;i++){                 
+                    $.ajax({
+                        url:codes[i].innerHTML,
+                        dataType:"text",
+                        async:false,
+                        success:function(data) {
+                            data=data.replaceAll("<","&lt");
+                            data=data.replaceAll(">","&gt");
+                            codes[i].innerHTML=data;
+                            console.log("sucesso");
+                        },
+                        error: function(){
+                            //codes[i].innerHTML='<a href="'codes[i].innerHTML+'">'+codes[i].innerHTML+'</a>';
+                            console.log("error");
+                        }
+                        
+                    });                 
+                }
+                hljs.initHighlightingOnLoad();
+            }
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+                slideNumber: true,
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }, 
+		 			{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: false, callback: function() { loadCodes(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+        
+		</script>
+
+	</body>
+</html>

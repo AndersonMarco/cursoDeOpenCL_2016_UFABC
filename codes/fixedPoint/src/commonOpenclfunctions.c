@@ -3,22 +3,26 @@ void createMsgErrorOpenCL(cl_int error,int mark, const char* functionName, const
     printf("Error  \n type: opencl (read the file cl.h for find error)\n code: %d\n line: %d\n function: %s\n file: %s\n", error, mark,functionName, file); \
 }
 
-int loadOpenclKernel(char *kernel, const char *file_name){
+int loadOpenclKernel(char **kernel, const char *file_name){
     FILE *fp;
     char ch;
     int i=0;  
-    fp = fopen(file_name,"r");    
-    checkFileOpen(fp,FILEOPEN_ERROR);
+    fp = fopen(file_name,"r"); checkFileOpen(fp,FILEOPEN_ERROR);
+    fseek(fp, 0L, SEEK_END); checkReadWriteAtFile(fp,FILEREAD_ERROR);
+    int sizeKernel=ftell(fp); checkReadWriteAtFile(fp,FILEREAD_ERROR);
+    fseek(fp, 0L, SEEK_SET); checkReadWriteAtFile(fp,FILEREAD_ERROR);
+    *kernel=(char *)malloc(sizeof(char)*(sizeKernel+1));    
+    if(*kernel==0x0){
+        fclose(fp);
+        checkMalloc(*kernel);
+    }
     while( ( ch = fgetc(fp) ) != EOF ){
-        kernel[i]=ch;
-        i++;
-        if(i==(kernelSourceSize-1))
-            return 2;
-        
+        (*kernel)[i]=ch;
+        i++;        
     }
     checkReadWriteAtFile(fp,FILEREAD_ERROR);
     
-    kernel[i]='\0';
+    (*kernel)[i]='\0';
     return 0;
 }
 

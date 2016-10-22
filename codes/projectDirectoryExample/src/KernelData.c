@@ -29,6 +29,7 @@ int compileKernel__kernelData(KernelData *self, const char *srcKernel, const cha
         printf("*********************Error in opencl Kernel*********************\n\n");
         printf("%s \n", srcLog);
         printf("******************************END*******************************\n");
+       free(srcLog);
     }
     checkCL(catchCodeCode);
     //End========================================================================================

@@ -11,7 +11,7 @@ int loadOpenclKernel(char **kernel, const char *file_name){
     fseek(fp, 0L, SEEK_END); checkReadWriteAtFile(fp,FILEREAD_ERROR);
     int sizeKernel=ftell(fp); checkReadWriteAtFile(fp,FILEREAD_ERROR);
     fseek(fp, 0L, SEEK_SET); checkReadWriteAtFile(fp,FILEREAD_ERROR);
-    *kernel=(char *)malloc(sizeof(char)*(sizeKernel));    
+    *kernel=(char *)malloc(sizeof(char)*(sizeKernel+1));    
     if(*kernel==0x0){
         fclose(fp);
         checkMalloc(*kernel);

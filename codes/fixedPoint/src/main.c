@@ -87,9 +87,9 @@ int main(void){
 #endif
 
     
-    kernelSrc=(char *)malloc(sizeof(char)*18192); checkMallocMain(kernelSrc);
+
     
-    catchCode=loadOpenclKernel(kernelSrc,kernelPath); checkGenericMain(catchCode);
+    catchCode=loadOpenclKernel(&kernelSrc,kernelPath); checkGenericMain(catchCode); checkMallocMain(kernelSrc);
 
 
     cl_platform_id platform;

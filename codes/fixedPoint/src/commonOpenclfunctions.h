@@ -12,8 +12,6 @@
 #include <CL/cl_gl.h>
 #endif
 #include "errors.h"
-/** maximum size for opencl code*/
-#define kernelSourceSize 19000
 
 /**
  * @brief Abort function execution if ret!= CL_SUCESS, 
@@ -83,7 +81,7 @@ void createMsgErrorOpenCL(cl_int error,int mark, const char* functionName, const
  * @param file_name path to opencl code file.
  * @return  0 if the function execute whithout error and different of zero otherwise. Read error.h for a error list.
 */
-int loadOpenclKernel(char *kernel, const char *file_name);
+int loadOpenclKernel(char **kernel, const char *file_name);
 
 /**
  * @brief "free" at a opencl buffer

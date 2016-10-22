@@ -20,17 +20,23 @@
 #define __func__ __FUNCTION__
 #endif
 
+
 void createMsgError(int error,const char *type,int mark , const char* functionName, const char* file);
-#define checkGeneric(ret)\
-    if(ret!=0){\
-        createMsgError(ret,"generic error",__LINE__,__func__,__FILE__);    \
-        return ret;\
+
+
+#define checkGeneric(ret)                                               \
+    if(ret!=0){                                                         \
+        createMsgError(ret,"generic error",__LINE__,__func__,__FILE__); \
+        return ret;                                                     \
     }
+
+
 #define checkGenericReturnPointer(ret)                                  \
     if(ret!=0){                                                         \
         createMsgError(ret,"generic error",__LINE__,__func__,__FILE__); \
-        return 0x0;                                                         \
+        return 0x0;                                                     \
     }
+
 
 #define checkMallocObject(ret)                                          \
     if(ret!=MALLOC_SUCESS){                                             \
@@ -38,31 +44,36 @@ void createMsgError(int error,const char *type,int mark , const char* functionNa
         return ret;                                                     \
     }
 
+
 #define checkMalloc(ret)                                             \
-    if(ret==MALLOC_ERROR){                                           \
-        createMsgError(ret,"malloc ",__LINE__,__func__,__FILE__);    \
-        return ret;                                                  \
+    if(ret==0x0){                                           \
+        createMsgError(MALLOC_ERROR,"malloc ",__LINE__,__func__,__FILE__);    \
+        return MALLOC_ERROR;                                                  \
     }
 
-#define checkMallocReturnPointer(val, ret)                             \
+
+#define checkMallocReturnPointer(val, ret)                              \
     if(val==0x0){                                                       \
         createMsgError(MALLOC_ERROR,"malloc ",__LINE__,__func__,__FILE__); \
         *ret=MALLOC_ERROR;                                              \
-        return 0x0;                                                        \
+        return 0x0;                                                     \
     }
-
 
 
 #define checkReadWriteAtFile(file,retFail)                              \
     if(ferror (file)){                                                  \
         printf("Error \n type: write or read\n code: %d\n line: %d\n function: %s\n file: %s\n",ferror(file), __LINE__,__func__, __FILE__); \
-        fclose(file);                                                    \
+        fclose(file);                                                   \
         return retFail;                                                 \
     }
+
+
 #define checkFileOpen(file,retFail)                                     \
-    if(file ==0x0){                                                  \
+    if(file ==0x0){                                                     \
         printf("Error \n type: file open\n line: %d\n function: %s\n file: %s\n", __LINE__,__func__, __FILE__); \
         return retFail;                                                 \
     }
+
+
 #endif
 

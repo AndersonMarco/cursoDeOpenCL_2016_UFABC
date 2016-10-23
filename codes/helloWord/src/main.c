@@ -105,9 +105,10 @@ int main(void){
 
 
     
-    catchCode=clEnqueueWriteBuffer(command_queue, a_g, CL_TRUE, 0,vectorsSize, a_h, 0, NULL, NULL); checkCLMain(catchCode);
-    catchCode=clEnqueueWriteBuffer(command_queue, b_g, CL_TRUE, 0,vectorsSize, b_h, 0, NULL, NULL); checkCLMain(catchCode);
-
+    catchCode=clEnqueueWriteBuffer(command_queue, a_g, CL_FALSE, 0,vectorsSize, a_h, 0, NULL, NULL); checkCLMain(catchCode);
+    catchCode=clEnqueueWriteBuffer(command_queue, b_g, CL_FALSE, 0,vectorsSize, b_h, 0, NULL, NULL); checkCLMain(catchCode);
+    clFinish(command_queue);
+    
     
     cl_kernel kernel=getKernel__KernelData(kernelData);    
     catchCode = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&a_g);checkCLMain(catchCode);

@@ -91,7 +91,8 @@ header .intro-text .skills {
   font-size: 1.25em;
   font-weight: 300;
 }
-@media (min-width: 990px) {
+/*
+@media (min-width: 1090px) {
   header .container {
     padding-top: 200px;
     padding-bottom: 100px;
@@ -103,6 +104,7 @@ header .intro-text .skills {
     font-size: 1.75em;
   }
 }
+*/
 .navbar-custom {
   background: #2C3E50;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -158,6 +160,7 @@ header .intro-text .skills {
   color: white;
   border-color: #18BC9C;
 }
+
 @media (min-width: 990px) {
   .navbar-custom {
     padding: 25px 0;
@@ -177,7 +180,17 @@ header .intro-text .skills {
   .navbar-custom.affix .navbar-brand {
     font-size: 1.5em;
   }
+  header .intro-text .name {
+    font-size: 1.75em;
+  }
+  header .intro-text .skills {
+    font-size: 1.75em;
+  }
+  .img-responsive{
+      max-width: 456px;
+  }
 }
+
 section {
   padding: 100px 0;
 }
@@ -189,7 +202,8 @@ section.success {
   background: #18BC9C;
   color: white;
 }
-@media (max-width: 979px) {
+/*
+@media (max-width: 1079px) {
   section {
     padding: 75px 0;
   }
@@ -197,6 +211,7 @@ section.success {
     padding-top: 75px;
   }
 }
+*/
 #portfolio .portfolio-item {
   margin: 0 0 15px;
   right: 0;
@@ -240,11 +255,12 @@ section.success {
 #portfolio * {
   z-index: 2;
 }
+/*
 @media (min-width: 990px) {
   #portfolio .portfolio-item {
     margin: 0 0 30px;
   }
-}
+}*/
 .floating-label-form-group {
   position: relative;
   margin-bottom: 0;

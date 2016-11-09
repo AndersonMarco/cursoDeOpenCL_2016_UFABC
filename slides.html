@@ -19,12 +19,12 @@
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/github.css">
-       
-      
+
+
         <script type="text/javascript"
                 src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
         </script>
-        
+
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.min.js">
         </script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.min.css">
@@ -64,7 +64,7 @@
          }
          .tableCron td.mark{
              background-color:#5ff;
-             
+
          }
          .tableCron th{
              font-size:20px;
@@ -76,9 +76,9 @@
              border: 2px solid black;
          }
          .crossOut .child{
-             position:absolute; 
+             position:absolute;
              display:block;
-             height:1px; 
+             height:1px;
              background:black;
          }
          .reveal .controls {
@@ -104,13 +104,16 @@
 		<div class="reveal">
 
 			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">                   
+			<div class="slides">
 				<section>
                     <div style="top:-50%; position: absolute; right: 0px; border: 0px none; "> <img style="border: none; box-shadow: none;" src="imgs/capesLogo.svg"> </div>
 					<h1>Aprendendo OpenCL </h1>
 
 					<p>
 						<small> <a href="javascript: void(0)">Anderson Gonçalves Marco</a> / <a href="javascript: void(0)">anderson.marco@gmail.com</a></small>
+					</p>
+					<p>
+						<small> <a href="javascript: void(0)">Mirelle Alves de Freitas</a> / <a href="javascript: void(0)">mirelle.adefreitas@gmail.com</a></small>
 					</p>
                     <p><small>Orientador: <a href="javascript: void(0)">Jerônimo C. Pellegrini </a> </small> </p>
 				</section>
@@ -174,7 +177,7 @@
                                 <track label="Portugues" kind="subtitles" srclang="pt" src="videos/Apollo13_v2.vtt" default>
                         </video>
                         <p class="fragment">
-                        </p> 
+                        </p>
 
                         </p>
 					</section>
@@ -192,7 +195,7 @@
                                 <track label="Portugues" kind="subtitles" srclang="pt" src="videos/OsEstagiarios.vtt" default>
                         </video>
                         <p class="fragment">
-                        </p> 
+                        </p>
                         </p>
 					</section>
                     <section>
@@ -231,16 +234,16 @@
                         <h2>Código do processo slave </h2>
                         <p>slave.c</p>
                         <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
-                            codes/ex1CalcularIntegral/slave.c 
+                            codes/ex1CalcularIntegral/slave.c
                         </code></pre>
                     </section>
                     <section>
                         <h2>Código do processo master </h2>
                         <p>master.bash</p>
                         <pre style="height:500px;"><code style="min-height:500px;" class="bash">
-                            codes/ex1CalcularIntegral/master.bash 
+                            codes/ex1CalcularIntegral/master.bash
                         </code></pre>
-                        
+
                     </section>
                     <section>
                         <h2>Observação</h2>
@@ -255,6 +258,7 @@
 						<h2>Oque é OpenCL</h2>
       			    </section>
                     <section>
+<<<<<<< HEAD
                     	<h2>Oque é OpenCL</h2>
                         <p>Uma especificação de API para programar maquinas heterogeneas.</p>
                     </section>
@@ -267,6 +271,11 @@
                         <a href="http://images.anandtech.com/doci/7888/780TiFront.jpg"> <img  height="500" src="imgs/780TiFront.jpg"> </a>
                     
                     </section>
+=======
+						<h2>Importancia das texturas e luzes em um game </h2>
+      			    </section>
+
+>>>>>>> origin2/gh-pages
                     <section>
                         <h2>Placas aceleradoras</h2>
                         <a href="https://www.chiploco.com/wp-content/uploads/2012/11/Intel-Xeon-Phi_4.jpg"> <img  height="500" src="imgs/Intel-Xeon-Phi_4.jpg"> </a>
@@ -276,6 +285,7 @@
                         <a href="http://www.nallatech.com/wp-content/uploads/510Tw-Case.jpg"> <img  height="500" src="imgs/510Tw-Case.jpg">  </a>
                     </section>
 
+<<<<<<< HEAD
                     <section>
                         <h2>Um SoC é heterogeneo</h2>
                         <a href="http://images.anandtech.com/reviews/gadgets/LG/Optimus2X/SoC.jpg"> <img  height="450" src="imgs/SoC.jpg"> </a>
@@ -297,6 +307,77 @@
                         <img height="450" src="imgs/arquiteturaOpencl.png">
                     </section>
 
+=======
+                    <section >
+						<h2>Linha do tempo </h2>
+                        <p id="visualization"></p>
+                        <script type="text/javascript">
+                          // DOM element where the Timeline will be attached
+                          var container = document.getElementById('visualization');
+
+                          // Create a DataSet (allows two way data-binding)
+                          var items = new vis.DataSet([
+                              {id: 1, content: 'Apple2 <br> <img style="height:120px;" src="imgs/imgsTimeLine/apple2.jpg"> <br/> ', start: '1977-06', style:"margin-bottom:-1500px;",group: 1},
+                              {id: 2, content: 'IBM Graphics Controller <br> <img style="height:120px;" src="imgs/imgsTimeLine/ibmVGA.jpg">', start: '1985-04',group: 2},
+                              {id: 3,content: '1s PCs com jogos 3d <br> <img style="height:120px;" src="imgs/imgsTimeLine/quake.jpg">', start: '1995-04',group: 2},
+                              {id: 4, content: '<img style="height:120px;" src="imgs/imgsTimeLine/voodoo1.jpg">', start: '1996-06',group: 3},
+                             {id: 5, content: 'GoT de Placas de video <br> <table> <tr> <td> <img style="height:70px;" src="imgs/imgsTimeLine/nvidiaLogo.jpg"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/3dfx.jpg"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/ati-logo.jpg"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/matrox.png"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/s3.png"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/intel.png"> </td> </tr> </table>', start: '1997-04', end:'2000' ,group: 3},
+                             {id: 6, content: 'Voodoo 5 Vs Geforce 256', start: '1999-09' ,group: 3},
+                              {id: 7, content: 'GPGPU <br> Mark Harris', start: '2002-04', end: '2003-08', group: 4},
+                              {id: 8, content: 'Proto linguagens GPGPU <br> Lib Sh e BrookGPU', start: '2004-04', end: '2007-01', group: 4},
+                              {id: 9, content: '<img style="height:90px;" src="imgs/imgsTimeLine/cuda.png">', start: '2007-01', group: 5},
+                              {id: 10, content: '<img style="height:90px;" src="imgs/imgsTimeLine/opencl.png">', start: '2009-02', group: 5},
+                              {id: 11, content: '<img style="height:90px;" src="imgs/imgsTimeLine/altera_opencl.jpg">', start: '2013-10', group: 5},
+                              {id: 12, content: '<img style="height:90px;" src="imgs/imgsTimeLine/altera_opencl.jpg">', start: '2013-10', group: 5},
+                              {id: 13, content: '<img style="height:90px;" src="imgs/imgsTimeLine/vulkan.jpg">', start: '2016-02', group: 6},
+                              {id: 14, content: '<img style="height:90px;" src="imgs/imgsTimeLine/spir.svg">', start: '2016-02', group: 6},
+                              {id: 15, content: '<img style="height:90px;" src="imgs/imgsTimeLine/directx12.png">', start: '2015-08', group: 6}
+                          ]);
+
+                             var groups=new vis.DataSet([
+                                 {id:1,content:"dispositivos <br> burros"},
+                                 {id:2,content:"placas 2d"},
+                                 {id:3,content:"placas 3d"},
+                                 {id:4,content:"GPUs com <br> shader"},
+                                 {id:5,content:"GPUs com <br> shader <br> generico"},
+                                 {id:6,content:"APIs de <br> baixo nível"}
+                             ])
+                          // Configuration for the Timeline
+                          var options = {
+                              height:"500px",
+                              format88: {
+                                  minorLabels: {
+                                      millisecond:'',
+                                      second:     '',
+                                      minute:     '',
+                                      hour:       '',
+                                      weekday:    '',
+                                      day:        '',
+                                      month:      '',
+                                      year:       'YYYY'
+                                  },
+                                  majorLabels: {
+                                      millisecond:'',
+                                      second:     '',
+                                      minute:     '',
+                                      hour:       '',
+                                      weekday:    '',
+                                      day:        '',
+                                      month:      'YYYY',
+                                      year:       'YYYY'
+                                  }
+                              },
+                              start:"1977",
+                              end: "1980"
+                          };
+
+                          // Create a Timeline
+                          var timeline = new vis.Timeline(container, items,groups, options);
+</script>
+
+      			    </section>
+
+>>>>>>> origin2/gh-pages
                 </section>
                 <section>
                     <section data-background="#007777" ">
@@ -330,24 +411,24 @@
                         <p>CmakeLists.txt</p>
                         <pre style="height:500px;"><code style="min-height:500px;" class="Cmake">
 codes/projectDirectoryExample/CMakeLists.txt
-                        </code></pre>  
-                        
+                        </code></pre>
+
       			    </section>
-                    
+
                     <section>
 					    <h2>Scripts de CMAKE</h2>
                         <p>CMakePostBuildCommands.cmake</p>
                         <pre style="height:500px;"><code style="min-height:500px;" class="CMAKE">
 codes/projectDirectoryExample/CMakePostBuildCommands.cmake
-                        </code></pre>  
-                        
+                        </code></pre>
+
       			    </section>
-                    
+
                     <section>
                         <h2>Preparando ambiente</h2>
-                        <p>Colocar ambos os scripts CMAKE na pasta raiz do projeto.</p>                        
+                        <p>Colocar ambos os scripts CMAKE na pasta raiz do projeto.</p>
                     </section>
-                    
+
                     <section>
                         <h2>Scripts para limpar o projeto (opcional)</h2>
                         <ul>
@@ -407,8 +488,8 @@ codes/projectDirectoryExample/src/whereami/whereami.c
                         </code></pre>
                     </section>
 
-                    
-                    
+
+
                     <section>
                         <h2>Códigos auxiliares</h2>
                         <p><b>KernelData.h, KernelData.c, errors.h, errors.c, commonOpenclfunctions.c, commonOpenclfunctions.h, commonFunctions.c e commonFunctions.h </b> ajudam na hora de se trabalhar com opencl. </p>
@@ -448,7 +529,7 @@ codes/projectDirectoryExample/src/errors.h
 codes/projectDirectoryExample/src/errors.c
                         </code></pre>
                     </section>
-                    
+
                     <section>
                         <h2>commonOpenclfunctions</h2>
                         <p> commonOpenclfunctions.h </p>
@@ -466,7 +547,7 @@ codes/projectDirectoryExample/src/commonOpenclfunctions.h
 codes/projectDirectoryExample/src/commonOpenclfunctions.c
                         </code></pre>
                     </section>
-                    
+
 
                     <section>
                         <h2>commonFunctions</h2>
@@ -503,7 +584,7 @@ codes/projectDirectoryExample/src/commonFunctions.c
                         <h2>main</h2>
                         <p>main.c</p>
                         <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
-                            codes/helloWord/src/main.c 
+                            codes/helloWord/src/main.c
                         </code></pre>
                     </section>
 
@@ -515,7 +596,7 @@ codes/projectDirectoryExample/src/commonFunctions.c
                         <h2>Kernel opencl</h2>
                         <p>add.cl</p>
                         <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
-                            codes/helloWord/src/openclCodes/add.cl 
+                            codes/helloWord/src/openclCodes/add.cl
                         </code></pre>
                     </section>
                     <section>
@@ -526,11 +607,11 @@ codes/projectDirectoryExample/src/commonFunctions.c
                         <h2>Compilando</h2>
                         <p>No Windows ou no Mac OS X você deve abrir a interface gráfica do CMAKE e gerar um projeto Visual Studio/Xcode.</p>
                     </section>
-                    
+
                     <section>
                         <h2>Arquitetura da GPU</h2>
                         <img src="imgs/gpuDiagram/diagram.svg">
-                    </section>                
+                    </section>
                 </section>
                 <section>
                     <section data-background="#007777"">
@@ -551,7 +632,7 @@ codes/projectDirectoryExample/src/commonFunctions.c
                         <h2>Soma de vetores</h2>
                         <p>add.cl</p>
                         <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
-                            codes/helloWordV2/src/openclCodes/add.cl 
+                            codes/helloWordV2/src/openclCodes/add.cl
                         </code></pre>
                     </section>
                     <section>
@@ -571,7 +652,7 @@ codes/projectDirectoryExample/src/commonFunctions.c
                         <h2>Structs e funções</h2>
                         <p>complexSquared.cl</p>
                         <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
-                            codes/structsAndFunctions/src/openclCodes/complexSquared.cl 
+                            codes/structsAndFunctions/src/openclCodes/complexSquared.cl
                         </code></pre>
                     </section>
                     <section>
@@ -736,17 +817,17 @@ __kernel void add(__global const float  *a, __global const float *b, __global fl
                     <section>
                         <h2>Diagrama de uma projeção</h2>
                         <p><img src="imgs/perspective_Projection_Principle.jpg"> </p>
-                    </section>                
+                    </section>
                     <section>
                         <h2>Como o OpenGL manipula a camera</h2>
 
                         <video id="video0004" class="unicoPlay video-js vjs-default-skin"  data-autoplay controls preload="none" width="640" height="360"  >
                             <source src="videos/futuramaOpenGL.webm" type='video/webm' />
                         </video>
-                        
+
                         <p class="fragment">
-                        </p> 
-                        
+                        </p>
+
                     </section>
                     <section>
                         <h2>Adicionar diretivas de compilação</h2>
@@ -795,7 +876,7 @@ __kernel void add(__global const float  *a, __global const float *b, __global fl
                         <h2>Main</h2>
                         <p>main.cpp</p>
                         <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
-                            codes/openclIntegration/src/main.cpp 
+                            codes/openclIntegration/src/main.cpp
                         </code></pre>
                     </section>
                     <section>
@@ -816,7 +897,7 @@ __kernel void add(__global const float  *a, __global const float *b, __global fl
                         <h2>vertex shader</h2>
                         <p>shaders/cube.v.glsl</p>
                         <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
-                            codes/openclIntegration/src/shaders/cube.v.glsl 
+                            codes/openclIntegration/src/shaders/cube.v.glsl
                         </code></pre>
                     </section>
 
@@ -824,7 +905,7 @@ __kernel void add(__global const float  *a, __global const float *b, __global fl
                         <h2>fragment shader</h2>
                         <p>shaders/cube.f.glsl</p>
                         <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
-                            codes/openclIntegration/src/shaders/cube.f.glsl 
+                            codes/openclIntegration/src/shaders/cube.f.glsl
                         </code></pre>
                     </section>
 
@@ -884,7 +965,7 @@ __kernel void add(__global const float  *a, __global const float *b, __global fl
                          <h2>Operações</h2>
                          <p>fixedPoint.cl</p>
                          <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
-                            codes/fixedPoint/src/openclCodes/fixedPoint.cl 
+                            codes/fixedPoint/src/openclCodes/fixedPoint.cl
                         </code></pre>
 
                      </section>
@@ -895,29 +976,29 @@ __kernel void add(__global const float  *a, __global const float *b, __global fl
                     </section>
                     <section>
                         <h2>Algoritmo para logaritmo</h2>
-                        
+
                         <p style="text-align:left;"> \( \ln a=b \Longleftrightarrow e^{b}=a\) </p>
                         <p style="text-align:left;">Com uma tabela de \( e^{x} \) procure os \( e^{i} \) onde \( \sum e^{i} \approx a \) </p>
-                        
+
                     </section>
                     <section>
                         <h2>Algoritmo para exponenciação</h2>
-                        
+
                         <p style="text-align:left;"> Lembre-se que \( e^{b}+e^{c} = e^{b+c}\)</p>
                         <p style="text-align:left;"> Com uma tabela de \( e^{x} \) procure os \( e^{i} \) onde \( \sum i \approx x \)</p>
-                        
+
                     </section>
                     <section>
                         <h2>Algoritmo para raiz quadrada</h2>
-                        
+
                         <p style="text-align:left;"> Encontre um \(t\) tal que \((xt)^2=x\).</p>
                         <p style="text-align:left;"> Para valores muito pequenos de deve-se evitar underflow. Para isto lembre-se da propriedade \( \frac{\sqrt{xy}}{\sqrt{y}}=\sqrt{x} \)</p>
                         <p>OBS: Este Algoritmo não precisa de tabela. </p>
                     </section>
-                    
+
                     <section>
                         <h2>Algoritmo para seno e cosseno</h2>
-                        
+
                         <p style="text-align:left;">Uma rotação pode ser divida em uma soma de rotações.</p>
                         <p style="text-align:left;">Sen(x) significa o valor do seno para o angulo x.</p>
                         <p style="text-align:left;"> A partir de uma tabela de senos e cossenos faça rotações  no vetor \( \vec{v} \) até chegar no angulo desejado. O valor inicial para  \( \vec{v} \) é \([0,1] \), o valor final de \( v_1 \) corresponde ao seno  e o valor final de \( v_2 \) é o cosseno.</p>
@@ -931,13 +1012,13 @@ __kernel void add(__global const float  *a, __global const float *b, __global fl
          String.prototype.replaceAll = function(target, replacement) {
             return this.split(target).join(replacement);
          };
-        
+
         </script>
 		<script src="js/numberSlides.js"></script>
 		<script>
             function loadCodes(){
                 var codes=$("code");
-                for(var i=0;i<codes.length;i++){                 
+                for(var i=0;i<codes.length;i++){
                     $.ajax({
                         url:codes[i].innerHTML,
                         dataType:"text",
@@ -952,8 +1033,8 @@ __kernel void add(__global const float  *a, __global const float *b, __global fl
                             //codes[i].innerHTML='<a href="'codes[i].innerHTML+'">'+codes[i].innerHTML+'</a>';
                             console.log("error");
                         }
-                        
-                    });                 
+
+                    });
                 }
                 hljs.initHighlightingOnLoad();
             }
@@ -971,14 +1052,14 @@ __kernel void add(__global const float  *a, __global const float *b, __global fl
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }, 
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 		 			{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: false, callback: function() { loadCodes(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
-        
+
 		</script>
 
 	</body>

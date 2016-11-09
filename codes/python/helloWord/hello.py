@@ -47,7 +47,7 @@ queue.finish()
 prg = cl.Program(ctx,strWithclCode).build()
 
 res_g = cl.Buffer(ctx, mf.WRITE_ONLY, 4*vectorsLength)
-prg.add(queue, a_np.shape, None, a_g, b_g, res_g)
+prg.add(queue,vectorsLength, None, a_g, b_g, res_g)
 
 res_np = np.empty_like(a_np)
 cl.enqueue_copy(queue, res_np, res_g, is_blocking=True)

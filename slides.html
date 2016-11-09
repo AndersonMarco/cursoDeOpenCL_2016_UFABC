@@ -81,6 +81,15 @@
              height:1px; 
              background:black;
          }
+         .reveal .controls {
+             display: none;
+             position: fixed;
+             width: 110px;
+             height: 110px;
+             z-index: 30;
+             left: 10px;
+             bottom: 10px;
+         }
        </style>
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
@@ -140,7 +149,7 @@
                                 <td>Cray X-MP/48</td> <td>Sun 2-50</td>
                             </tr>
                             <tr>
-                                <td> <img src="imgs/cray.jpg"> </td>                                 <td> <img  src="imgs/sun_2-50_1.png"> </td>
+                                <td> <a href="http://www.craysupercomputers.com/images/Systems/CrayXMP/CrayXMP_015.jpg"><img src="imgs/cray.jpg"> </a> </td>                                 <td> <img  src="imgs/sun_2-50_1.png"> </td>
                         </tr>
                         <tr>
                             <td> <p>Lançado: 1984 </p> <p>Preço: $15 milhões </p>   </td> <td> <p>Lançado: 1986</p> <p>Preço: $8.900</p> </td>
@@ -172,7 +181,7 @@
                     <section>
                         <h2>Memória distribuida</h2>
                         <p>
-                            <img  height="400" src="imgs/mdf-cluster-completed-cabling.jpg">
+                            <a href="https://hbfs.files.wordpress.com/2010/04/mdf-cluster-completed-cabling.jpg">  <img  height="500" src="imgs/mdf-cluster-completed-cabling.jpg"> </a>
                         </p>
                     </section>
                     <section>
@@ -187,11 +196,19 @@
                         </p>
 					</section>
                     <section>
+                        <h2>Memória compartilhada</h2>
+						<p>
+                            <a href="http://cdn3.volusion.com/gmqhw.vfqgo/v/vspfiles/photos/S2600CP-CPU-128GB-12800-2.jpg"> <img  height="500" src="imgs/motherboardTwoProcessors.jpg"> </a>
+                        </p>
+                    </section>
+
+                    <section>
                         	<h2>Memória compartilhada</h2>
 						    <p>
                                 <img  height="400" src="imgs/18mp8oswoyudkjpg.jpg">
                             </p>
                     </section>
+
 
                     <section>
                         <h2>A Excessão confirma a regra</h2>
@@ -201,7 +218,7 @@
                         </p>
                     </section>
                     <section>
-                        <h2>Programando em paralelo sem precisar bibliotecas</h2>
+                        <h2>Programando em paralelo sem precisar de bibliotecas</h2>
                         <p>Paralelizando a integral da função de Weierstrass entre -0.4 e 0.4.</p>
                         <p><img height="400" src="codes/ex1CalcularIntegral/weierstrass.svg"></p>
 
@@ -235,88 +252,56 @@
                 </section>
                 <section>
                     <section data-background="#007777" >
-						<h2>Historia das GPUs</h2>
+						<h2>Oque é OpenCL</h2>
       			    </section>
                     <section>
-						<h2>Importancia das texturas e luzes em um game </h2>
-      			    </section>
-                    
+                    	<h2>Oque é OpenCL</h2>
+                        <p>Uma especificação de API para programar maquinas heterogeneas.</p>
+                    </section>
                     <section>
-					    <h2>Luzes</h2>
-                        <>
-      			    </section>
-
-                    <section >
-						<h2>Linha do tempo </h2>
-                        <p id="visualization"></p>
-                        <script type="text/javascript">
-                          // DOM element where the Timeline will be attached
-                          var container = document.getElementById('visualization');
-                          
-                          // Create a DataSet (allows two way data-binding)
-                          var items = new vis.DataSet([
-                              {id: 1, content: 'Apple2 <br> <img style="height:120px;" src="imgs/imgsTimeLine/apple2.jpg"> <br/> ', start: '1977-06', style:"margin-bottom:-1500px;",group: 1},
-                              {id: 2, content: 'IBM Graphics Controller <br> <img style="height:120px;" src="imgs/imgsTimeLine/ibmVGA.jpg">', start: '1985-04',group: 2},
-                              {id: 3,content: '1s PCs com jogos 3d <br> <img style="height:120px;" src="imgs/imgsTimeLine/quake.jpg">', start: '1995-04',group: 2},
-                              {id: 4, content: '<img style="height:120px;" src="imgs/imgsTimeLine/voodoo1.jpg">', start: '1996-06',group: 3},
-                             {id: 5, content: 'GoT de Placas de video <br> <table> <tr> <td> <img style="height:70px;" src="imgs/imgsTimeLine/nvidiaLogo.jpg"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/3dfx.jpg"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/ati-logo.jpg"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/matrox.png"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/s3.png"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/intel.png"> </td> </tr> </table>', start: '1997-04', end:'2000' ,group: 3},
-                             {id: 6, content: 'Voodoo 5 Vs Geforce 256', start: '1999-09' ,group: 3},
-                              {id: 7, content: 'GPGPU <br> Mark Harris', start: '2002-04', end: '2003-08', group: 4},
-                              {id: 8, content: 'Proto linguagens GPGPU <br> Lib Sh e BrookGPU', start: '2004-04', end: '2007-01', group: 4},
-                              {id: 9, content: '<img style="height:90px;" src="imgs/imgsTimeLine/cuda.png">', start: '2007-01', group: 5},
-                              {id: 10, content: '<img style="height:90px;" src="imgs/imgsTimeLine/opencl.png">', start: '2009-02', group: 5},
-                              {id: 11, content: '<img style="height:90px;" src="imgs/imgsTimeLine/altera_opencl.jpg">', start: '2013-10', group: 5},
-                              {id: 12, content: '<img style="height:90px;" src="imgs/imgsTimeLine/altera_opencl.jpg">', start: '2013-10', group: 5},
-                              {id: 13, content: '<img style="height:90px;" src="imgs/imgsTimeLine/vulkan.jpg">', start: '2016-02', group: 6},
-                              {id: 14, content: '<img style="height:90px;" src="imgs/imgsTimeLine/spir.svg">', start: '2016-02', group: 6},
-                              {id: 15, content: '<img style="height:90px;" src="imgs/imgsTimeLine/directx12.png">', start: '2015-08', group: 6}
-                          ]);
-
-                             var groups=new vis.DataSet([
-                                 {id:1,content:"dispositivos <br> burros"},
-                                 {id:2,content:"placas 2d"},
-                                 {id:3,content:"placas 3d"},
-                                 {id:4,content:"GPUs com <br> shader"},
-                                 {id:5,content:"GPUs com <br> shader <br> generico"},
-                                 {id:6,content:"APIs de <br> baixo nível"}
-                             ]) 
-                          // Configuration for the Timeline
-                          var options = {
-                              height:"500px",                             
-                              format88: {
-                                  minorLabels: {
-                                      millisecond:'',
-                                      second:     '',
-                                      minute:     '',
-                                      hour:       '',
-                                      weekday:    '',
-                                      day:        '',
-                                      month:      '',
-                                      year:       'YYYY'
-                                  },
-                                  majorLabels: {
-                                      millisecond:'',
-                                      second:     '',
-                                      minute:     '',
-                                      hour:       '',
-                                      weekday:    '',
-                                      day:        '',
-                                      month:      'YYYY',
-                                      year:       'YYYY'
-                                  }
-                              },
-                              start:"1977",
-                              end: "1980"
-                          };
-                          
-                          // Create a Timeline
-                          var timeline = new vis.Timeline(container, items,groups, options);
-</script>
-
-      			    </section>
+                        <h2>Maquinas heterogeneas</h2> 
+                        <p>Desktops/Notebooks/Celulares são compostos por varíos processadores diferentes</p>                                                
+                    </section>
+                    <section>
+                        <h2>GPUs</h2>
+                        <a href="http://images.anandtech.com/doci/7888/780TiFront.jpg"> <img  height="500" src="imgs/780TiFront.jpg"> </a>
                     
+                    </section>
+                    <section>
+                        <h2>Placas aceleradoras</h2>
+                        <a href="https://www.chiploco.com/wp-content/uploads/2012/11/Intel-Xeon-Phi_4.jpg"> <img  height="500" src="imgs/Intel-Xeon-Phi_4.jpg"> </a>
+                    </section>
+                    <section>
+                        <h2>FPGAs</h2>
+                        <a href="http://www.nallatech.com/wp-content/uploads/510Tw-Case.jpg"> <img  height="500" src="imgs/510Tw-Case.jpg">  </a>
+                    </section>
+
+                    <section>
+                        <h2>Um SoC é heterogeneo</h2>
+                        <a href="http://images.anandtech.com/reviews/gadgets/LG/Optimus2X/SoC.jpg"> <img  height="450" src="imgs/SoC.jpg"> </a>
+                        <center>Tegra 2</center>
+                    </section>
+                    <section>
+                        <h2>Invasão das GPUs</h2>
+                        <a href="http://images.anandtech.com/doci/7677/DieShot%20-%20Richland.jpg?_ga=1.95301020.1026892887.1478151153"> <img height="450" src="imgs/DieShot-Richland.jpg"> </a>
+                        <center> APU AMD-A10 Trinity</center>
+                    </section>
+
+                    <section>
+                        <h2>Invasão das GPUs</h2>
+                        <a href="http://www.justinteriorideas.com/wp-content/uploads/2014/06/fd37d__01-Kaveri-Die.jpg"> <img height="450" src="imgs/fd37d__01-Kaveri-Die.jpg"> </a>
+                        <center>APU AMD-A10 Kavery</center>
+                    </section>
+                    <section>
+                        <h2>Arquitetura do OpenCL</h2>
+                        <img height="450" src="imgs/arquiteturaOpencl.png">
+                    </section>
+
                 </section>
                 <section>
+                    <section data-background="#007777" ">
+                        <h2>Preparando o ambiente de desenvolvimento</h2>
+                    </section>
                     <section>
 					    <h2>CMAKE</h2>
                         <p> Um gerador de scripts de compilação.</p>
@@ -656,6 +641,86 @@ codes/projectDirectoryExample/src/commonFunctions.c
                 </section>
                 <section>
                     <section data-background="#007777">
+                        <h2>Profilling de aplicações.</h2>
+                    </section>
+                    <section>
+                        <h2>Objetivos</h2>
+                        <ul>
+                            <li>Melhorar desempenho</li>
+                            <li>Descobrir que dispositivo é melhor para um dado programa</li>
+                            <li>Debugar</li>
+                        </ul>
+                    </section>                     
+                    <section>
+                        <h2>Programas utilizados</h2>
+                        <ul>
+                            <li><a href="https://github.com/GPUOpen-Tools/CodeXL"> CodeXL*</a></li>
+                            <li><a href="https://github.com/jrprice/Oclgrind"> Oclgrind </a> </li>
+                        </ul>
+                    </section>                   
+                    <section>
+                        <h2>Oclgrind - principais comandos</h2>
+                        <ul>
+                            <li>Frequência das instruções SPIRs utilizadas:<span style="color:#891a1a"> oclgrind --inst-counts </span><span style="color:#1a5289">program</span> </li>
+                            <li>Detecta quando duas ou mais threads escrevem na mesma região de memória:<span style="color:#891a1a"> oclgrind --data-races </span><span style="color:#1a5289">program</span> </li>
+                            <li> Debugar os kernels chamados por um programa: <span style="color:#891a1a"> oclgrind -i </span><span style="color:#1a5289">program</span></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Oque é SPIR/SPIR</h2>
+                        <a href="https://www.khronos.org/assets/uploads/apis/2016-opencl-landing-page-1.png"> <img height="525" src="imgs/2016-opencl-landing-page-1.png"> </a>
+                    </section>
+                    <section>
+                        <h2>Oque é SPIR/SPIR</h2>
+                        <a href="http://images.anandtech.com/doci/9039/OCL21_Eco.png"> <img src="imgs/OCL21_Eco.png"> </a>
+                    </section>
+                     <section>
+                        <h2>Oque é SPIR/SPIR</h2>
+                        <p>Documentação das instruções:</p>
+                        <ul>
+                            <li> <a href="https://www.khronos.org/registry/spir/specs/spir_spec-1.2.pdf"> https://www.khronos.org/registry/spir/specs/spir_spec-1.2.pdf </a> </li>
+                            <li> <a href="http://llvm.org/docs/LangRef.html"> http://llvm.org/docs/LangRef.html</a> </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>--inst-counts</h2>
+                        <p>O  resultado dele indicate em que tipo de dispositivo um determinado código vai rodar melhor.</p>
+                    </section>
+                    <section>
+                        <h2>--inst-counts</h2>
+                        <p>Códigos com muitos:</p>
+                        <ul>
+                            <li> <span style="color:#891a1a"> select </span>  e  <span style="color:#891a1a"> br </span> rodam melhor em procesadores x86 ou talves Xeon PHY </li>
+                            <li> <span style="color:#891a1a">  store global</span> ou <span style="color:#891a1a">load global </span> utilize um dispositivo com uma boa largura de banda coma  mémoria (GPUs com GDDR5 de 384 bits ou com mémorias HBM), acredito que FPGAs não vão ter um bom desempenho em códigos assim. </li>                                
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>--data-races</h2>
+                        <p>"Data reces" não são acionadas quando duas ou mais threads subscrevem uma região de memoria com mesmo valor.</p>
+                        <p>Exemplo de subescrita de memória com não acionamento de "Data reces"</p>
+                        <pre style="height:300px;"><code style="min-height:300px;" class="cpp">
+__kernel void add(__global const float  *a, __global const float *b, __global float *c){
+       int id = get_global_id(0);
+       c[id]=a[id]+b[id];
+       if(id==1){
+           c[0]=a[0]+b[0];
+       }
+      
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>--data-races</h2>
+                        <p>Use <span style="color:#891a1a"> oclgrind  --data-races --uniform-writes </span> <span style="color:#1a5289">program</span> para pegar as condições de corrida que o  <span style="color:#891a1a"> oclgrind  --data-races </span> <span style="color:#1a5289">program</span> não pega. </p>
+                    </section>
+                     <section>
+                        <h2>-i</h2>
+                        <p>É como um gdb. Para se deslocar entre as threads durante o debug  use o comando <span style="color:#891a1a"> workitem </span>  <span style="color:#1a5289">idGlobalDaThread</span>  </p>
+                    </section>
+                    
+                </section>
+                <section>
+                    <section data-background="#007777">
                         <h2>Preparando o ambiente de desenvolvimento para integração com OpenGL.</h2>
                     </section>
                     <section>
@@ -868,7 +933,7 @@ codes/projectDirectoryExample/src/commonFunctions.c
          };
         
         </script>
-
+		<script src="js/numberSlides.js"></script>
 		<script>
             function loadCodes(){
                 var codes=$("code");

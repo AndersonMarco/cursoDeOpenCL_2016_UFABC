@@ -5,6 +5,7 @@
  *
  * Copyright (C) 2013 Hakim El Hattab, http://hakim.se
  */
+functionsVectorForExecuteAfterStartEmbeddedContent=[];
 functionsVectorForExecuteAfterNextFragmentBeDisplayed=[];
 var Reveal = (function(){
 
@@ -1924,7 +1925,7 @@ var Reveal = (function(){
            
         });
         var arrJCrossOut = $(".crossOut");
-        
+        toArray(functionsVectorForExecuteAfterStartEmbeddedContent).forEach(function(element){ element(slide);}); 
     }   
 	/**
 	 * Start playback of any embedded content inside of

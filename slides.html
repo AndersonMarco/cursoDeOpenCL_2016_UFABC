@@ -267,7 +267,8 @@
                     </section>
                     <section>
                         <h2>GPUs</h2>
-                        <a href="http://images.anandtech.com/doci/7888/780TiFront.jpg"> <img  height="500" src="imgs/780TiFront.jpg"> </a>                    
+                        <a href="http://images.anandtech.com/doci/7888/780TiFront.jpg"> <img  height="500" src="imgs/780TiFront.jpg"> </a>
+                    </section>
                     <section>
                         <h2>Placas aceleradoras</h2>
                         <a href="https://www.chiploco.com/wp-content/uploads/2012/11/Intel-Xeon-Phi_4.jpg"> <img  height="500" src="imgs/Intel-Xeon-Phi_4.jpg"> </a>
@@ -277,7 +278,6 @@
                         <a href="http://www.nallatech.com/wp-content/uploads/510Tw-Case.jpg"> <img  height="500" src="imgs/510Tw-Case.jpg">  </a>
                     </section>
 
-<<<<<<< HEAD
                     <section>
                         <h2>Um SoC é heterogeneo</h2>
                         <a href="http://images.anandtech.com/reviews/gadgets/LG/Optimus2X/SoC.jpg"> <img  height="450" src="imgs/SoC.jpg"> </a>
@@ -298,78 +298,6 @@
                         <h2>Arquitetura do OpenCL</h2>
                         <img height="450" src="imgs/arquiteturaOpencl.png">
                     </section>
-
-=======
-                    <section >
-						<h2>Linha do tempo </h2>
-                        <p id="visualization"></p>
-                        <script type="text/javascript">
-                          // DOM element where the Timeline will be attached
-                          var container = document.getElementById('visualization');
-
-                          // Create a DataSet (allows two way data-binding)
-                          var items = new vis.DataSet([
-                              {id: 1, content: 'Apple2 <br> <img style="height:120px;" src="imgs/imgsTimeLine/apple2.jpg"> <br/> ', start: '1977-06', style:"margin-bottom:-1500px;",group: 1},
-                              {id: 2, content: 'IBM Graphics Controller <br> <img style="height:120px;" src="imgs/imgsTimeLine/ibmVGA.jpg">', start: '1985-04',group: 2},
-                              {id: 3,content: '1s PCs com jogos 3d <br> <img style="height:120px;" src="imgs/imgsTimeLine/quake.jpg">', start: '1995-04',group: 2},
-                              {id: 4, content: '<img style="height:120px;" src="imgs/imgsTimeLine/voodoo1.jpg">', start: '1996-06',group: 3},
-                             {id: 5, content: 'GoT de Placas de video <br> <table> <tr> <td> <img style="height:70px;" src="imgs/imgsTimeLine/nvidiaLogo.jpg"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/3dfx.jpg"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/ati-logo.jpg"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/matrox.png"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/s3.png"> </td> <td> <img style="height:70px;" src="imgs/imgsTimeLine/intel.png"> </td> </tr> </table>', start: '1997-04', end:'2000' ,group: 3},
-                             {id: 6, content: 'Voodoo 5 Vs Geforce 256', start: '1999-09' ,group: 3},
-                              {id: 7, content: 'GPGPU <br> Mark Harris', start: '2002-04', end: '2003-08', group: 4},
-                              {id: 8, content: 'Proto linguagens GPGPU <br> Lib Sh e BrookGPU', start: '2004-04', end: '2007-01', group: 4},
-                              {id: 9, content: '<img style="height:90px;" src="imgs/imgsTimeLine/cuda.png">', start: '2007-01', group: 5},
-                              {id: 10, content: '<img style="height:90px;" src="imgs/imgsTimeLine/opencl.png">', start: '2009-02', group: 5},
-                              {id: 11, content: '<img style="height:90px;" src="imgs/imgsTimeLine/altera_opencl.jpg">', start: '2013-10', group: 5},
-                              {id: 12, content: '<img style="height:90px;" src="imgs/imgsTimeLine/altera_opencl.jpg">', start: '2013-10', group: 5},
-                              {id: 13, content: '<img style="height:90px;" src="imgs/imgsTimeLine/vulkan.jpg">', start: '2016-02', group: 6},
-                              {id: 14, content: '<img style="height:90px;" src="imgs/imgsTimeLine/spir.svg">', start: '2016-02', group: 6},
-                              {id: 15, content: '<img style="height:90px;" src="imgs/imgsTimeLine/directx12.png">', start: '2015-08', group: 6}
-                          ]);
-
-                             var groups=new vis.DataSet([
-                                 {id:1,content:"dispositivos <br> burros"},
-                                 {id:2,content:"placas 2d"},
-                                 {id:3,content:"placas 3d"},
-                                 {id:4,content:"GPUs com <br> shader"},
-                                 {id:5,content:"GPUs com <br> shader <br> generico"},
-                                 {id:6,content:"APIs de <br> baixo nível"}
-                             ])
-                          // Configuration for the Timeline
-                          var options = {
-                              height:"500px",
-                              format88: {
-                                  minorLabels: {
-                                      millisecond:'',
-                                      second:     '',
-                                      minute:     '',
-                                      hour:       '',
-                                      weekday:    '',
-                                      day:        '',
-                                      month:      '',
-                                      year:       'YYYY'
-                                  },
-                                  majorLabels: {
-                                      millisecond:'',
-                                      second:     '',
-                                      minute:     '',
-                                      hour:       '',
-                                      weekday:    '',
-                                      day:        '',
-                                      month:      'YYYY',
-                                      year:       'YYYY'
-                                  }
-                              },
-                              start:"1977",
-                              end: "1980"
-                          };
-
-                          // Create a Timeline
-                          var timeline = new vis.Timeline(container, items,groups, options);
-</script>
-
-      			    </section>
-
->>>>>>> origin2/gh-pages
                 </section>
                 <section>
                     <section data-background="#007777" ">

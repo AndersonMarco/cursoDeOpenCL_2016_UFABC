@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <script type="application/javascript" src="jquery.js"></script>
+        <script type="application/javascript">
+         $(document).ready(function(){
+             $.get( "http://192.168.0.4:8888", function( data ) {                
+                 var image = new Image();
+                 image.src = 'data:image/png;base64,'+data;
+                 document.body.appendChild(image);             
+             });
+         });
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

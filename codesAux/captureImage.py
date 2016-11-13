@@ -1,6 +1,4 @@
 import socket
-import cv2
-import numpy as np
 import time
 import sys
 import PyQt4
@@ -20,8 +18,8 @@ def getImage():
     painter.end();
     img= imageDesktop.toImage()
     width=img.width()
-    height=img.height()
-    return img
+    height=img.height()    
+    return img;
 
 def imgToBase64():
     ba= QByteArray()

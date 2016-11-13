@@ -1,16 +1,99 @@
+<!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
         <script type="application/javascript" src="jquery.js"></script>
+        <script type="application/javascript" src="webgl-utils.js"></script>
+        <script type="application/javascript" src="webglImageDisplay.js"></script>
         <script type="application/javascript">
          $(document).ready(function(){
-             $.get( "http://192.168.0.4:8888", function( data ) {                
-                 var image = new Image();
-                 image.src = 'data:image/png;base64,'+data;
-                 document.body.appendChild(image);             
+             var imageLoaded=false;
+             var proportion=16/9;
+             var width=$(window).width();
+             var height=parseInt($(window).height()-10);
+             var image = new Image();
+             var c = document.getElementById("myCanvas");
+             c.height=height;
+             c.width=width;
+             
+             $(window).resize(function(){
+                 if(imageLoaded==false) return;
+                 width=$(window).width();
+                 height=parseInt($(window).height()-10);
+                 c.height=height;
+                 c.width=width;
+               
              });
+             var proc=function(){
+                 $.get( "http://192.168.100.12:8888", function( data ) {
+                      
+                     var t0 = performance.now();
+
+                     c = document.getElementById("myCanvas");
+                     var ctx = c.getContext("2d");
+                     image = new Image();
+                     image.src = 'data:image/png;base64,'+data;
+                     if((height*proportion)<width ){
+                         ctx.drawImage(image,0,0,Math.round(height*proportion),height);
+                     }
+                     else{
+                         ctx.drawImage(image,0,0,width,Math.round(width*(1/proportion)));
+                     }
+                     
+                     var t1 = performance.now();
+                     console.log("time: "+(t1-t0));
+                     imageLoaded=true;
+
+                 }).always(function(){
+                     setTimeout(proc,2000);
+                 });
+
+             };
+             setTimeout(proc,100);
+             
          });
+        </script>
+        <script id="2d-fragment-shader" type="x-shader/x-fragment" >
+         precision mediump float;
+         
+         // our texture
+         uniform sampler2D u_image;
+         
+            // the texCoords passed in from the vertex shader.
+         varying vec2 v_texCoord;
+         
+         void main() {
+             gl_FragColor = texture2D(u_image, v_texCoord);
+         }
+        </script>
+        <script id="2d-vertex-shader" type="x-shader/x-vertex">
+            attribute vec2 a_position;
+            attribute vec2 a_texCoord;
+
+            uniform vec2 u_resolution;
+            
+            varying vec2 v_texCoord;
+            
+            void main() {
+                // convert the rectangle from pixels to 0.0 to 1.0
+                vec2 zeroToOne = a_position / u_resolution;
+                
+                // convert from 0->1 to 0->2
+                vec2 zeroToTwo = zeroToOne * 2.0;
+                
+                // convert from 0->2 to -1->+1 (clipspace)
+                vec2 clipSpace = zeroToTwo - 1.0;
+                
+                gl_Position = vec4(clipSpace * vec2(1, -1), 0, 1);
+            
+                // pass the texCoord to the fragment shader
+                // The GPU will interpolate this value between points.
+                v_texCoord = a_texCoord;
+            }
         </script>
     </head>
     <body>
+        <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
+        </canvas> 
     </body>
 </html>

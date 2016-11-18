@@ -1,5 +1,11 @@
 $( document ).ready(function() {
-    
+    var scaleNumSlide=function(){
+        var height=$(Window).height();
+        if(height>50)
+            return (height/768);
+        else
+            return 1;
+    }
     setTimeout(function(){
         var slides=$(".slides")[0].children;
         var isClass=function(elementNode,classElement){
@@ -37,10 +43,11 @@ $( document ).ready(function() {
 
         );
         $( window ).resize(function() {    
-            $("#numOfTheSlide").css("font-size",parseInt(36*getScaleAtReveal(),10)+"px");
+            $("#numOfTheSlide").css("font-size",parseInt(Math.round(36*scaleNumSlide()),10)+"px");
         });
         $( '<div id="numOfTheSlide" class=".reveal" style="font-family: Lato, sans-serif; font-size: 18px; position: fixed; bottom: 40px; right: 40px;"></div>' ).insertAfter(".controls");
-        $("#numOfTheSlide").css("font-size",parseInt(36*getScaleAtReveal(),10)+"px");
+        setTimeout(function (){ $("#numOfTheSlide").css("font-size",parseInt(Math.round(36*scaleNumSlide()),10)+"px");},1300);
+        setTimeout(function (){ $("#numOfTheSlide").css("font-size",parseInt(Math.round(36*scaleNumSlide()),10)+"px");},1300);
 
     },800);
 });

@@ -33,12 +33,15 @@
                      var ctx = c.getContext("2d");
                      image = new Image();
                      image.src = 'data:image/png;base64,'+data;
-                     if((height*proportion)<width ){
-                         ctx.drawImage(image,0,0,Math.round(height*proportion),height);
-                     }
-                     else{
-                         ctx.drawImage(image,0,0,width,Math.round(width*(1/proportion)));
-                     }
+                     image.onload = function() {
+                          if((height*proportion)<width ){
+                              ctx.drawImage(image,0,0,Math.round(height*proportion),height);
+                          }
+                         else{
+                             ctx.drawImage(image,0,0,width,Math.round(width*(1/proportion)));
+                         }
+                     };
+                    
                      
                      var t1 = performance.now();
                      console.log("time: "+(t1-t0));

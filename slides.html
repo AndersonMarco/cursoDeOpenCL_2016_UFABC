@@ -122,13 +122,16 @@
                     <h2>Tópicos</h2>
                     <ul>
                         <li>Introdução a programação paralela</li>
-                        <li>Historia das GPUs</li>
                         <li>Preparando o ambiente de desenvolvimento</li>
                         <li>Hello Word</li>
                         <li>Estrategia de paralelização</li>
+
+                        <li>Debug/Profilling</li>
+                        <li>Opencl com python</li>
+                        <li>Aritmética de Ponto-fixo</li>
+
                         <li>Preparando o ambiente de desenvolvimento para integração com OpenGL</li>
                         <li>Integração com OpenGL</li>
-                        <li>Debug/Profilling</li>
                     </ul>
 				</section>
 				<section>
@@ -658,7 +661,21 @@ codes/projectDirectoryExample/src/commonFunctions.c
                             <li><a href="https://github.com/GPUOpen-Tools/CodeXL"> CodeXL*</a></li>
                             <li><a href="https://github.com/jrprice/Oclgrind"> Oclgrind </a> </li>
                         </ul>
-                    </section>                   
+                    </section>                    
+                    <section>
+                        <h2>CodeXL</h2>
+                        <ul>
+                        <li> Analise de tempo que as rotinas do driver OpenCL levaram</li>
+                        <li> Desenvolvido pela AMD</li>
+                        <li> OpenSource*</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>CodeXL</h2>
+                        <video id="video0003" class=" unicoPlay video-js vjs-default-skin"  data-autoplay controls preload="none" width="640" height="360"  >
+                            <source src="videos/codeXLProfile.webm" type='video/webm' />
+                        </video>
+                    </section>
                     <section>
                         <h2>Oclgrind - principais comandos</h2>
                         <ul>
@@ -722,6 +739,53 @@ __kernel void add(__global const float  *a, __global const float *b, __global fl
                 </section>
                 <section>
                     <section data-background="#007777">
+                        <h2>Python com OpenCL.</h2>
+                    </section>
+                    <section>
+                        <h2>Hello World</h2>
+                        <p>hello.py</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/python/helloWord/hello.py
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Hello World</h2>
+                        <p>add.cl</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/python/helloWord/add.cl
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Shared memory</h2>
+                        <p>sharedMemory.py</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/python/sharedMemory/sharedMemory.py
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Shared memory</h2>
+                        <p>matmul.cl</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/python/sharedMemory/matmul.cl
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Structs</h2>
+                        <p>main.py</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/python/structs/main.py
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Structs</h2>
+                        <p>complexSquared.cl</p>
+                        <pre style="height:500px;"><code style="min-height:500px;" class="cpp">
+                            codes/python/structs/complexSquared.cl 
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section data-background="#007777">
                         <h2>Preparando o ambiente de desenvolvimento para integração com OpenGL.</h2>
                     </section>
                     <section>
@@ -741,7 +805,7 @@ __kernel void add(__global const float  *a, __global const float *b, __global fl
                     <section>
                         <h2>Como o OpenGL manipula a camera</h2>
 
-                        <video id="video0004" class="unicoPlay video-js vjs-default-skin"  data-autoplay controls preload="none" width="640" height="360"  >
+                        <video id="video0005" class="unicoPlay video-js vjs-default-skin"  data-autoplay controls preload="none" width="640" height="360"  >
                             <source src="videos/futuramaOpenGL.webm" type='video/webm' />
                         </video>
 

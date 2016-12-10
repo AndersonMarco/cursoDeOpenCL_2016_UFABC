@@ -1,6 +1,6 @@
 $( document ).ready(function() {
     var scaleNumSlide=function(){
-        var height=$(Window).height();
+        var height=$(document).height();
         if(height>50)
             return (height/768);
         else
@@ -42,7 +42,7 @@ $( document ).ready(function() {
             }
 
         );
-        $( window ).resize(function() {    
+        $(document).resize(function() {    
             $("#numOfTheSlide").css("font-size",parseInt(Math.round(36*scaleNumSlide()),10)+"px");
         });
         $( '<div id="numOfTheSlide" class=".reveal" style="font-family: Lato, sans-serif; font-size: 18px; position: fixed; bottom: 40px; right: 40px;"></div>' ).insertAfter(".controls");

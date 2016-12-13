@@ -56,7 +56,7 @@ FILE(GLOB sources   RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}  "${srcDir}/*.c"    "${
 FILE(GLOB openclFiles RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${srcDirOpencl}/*.cl")
 
 
-ADD_EXECUTABLE(${nameOfProject} src/main.c ${headers} ${sources} ${openclFiles})
+ADD_EXECUTABLE(${nameOfProject}  ${headers} ${sources} ${openclFiles})
 TARGET_LINK_LIBRARIES(${nameOfProject} ${OpenCL_LIBRARY})
 SET_TARGET_PROPERTIES(${nameOfProject} PROPERTIES OUTPUT_NAME ${outputFile})
 RUN_POST_BUILD_COMMANDS_DEFAULTS(${nameOfProject})
@@ -74,7 +74,7 @@ IF(${CMAKE_GENERATOR} STREQUAL "Unix Makefiles")
     SET(${ADDITIONAL_MAKE_CLEAN_FILES} "build")
 
 
-    ADD_EXECUTABLE(debug EXCLUDE_FROM_ALL src/main.c ${headers} ${sources} ${openclFiles})
+    ADD_EXECUTABLE(debug EXCLUDE_FROM_ALL  ${headers} ${sources} ${openclFiles})
     TARGET_LINK_LIBRARIES(debug ${OpenCL_LIBRARY})
     SET_TARGET_PROPERTIES(debug PROPERTIES OUTPUT_NAME ${outputFile}_debug)
     IF( CMAKE_COMPILER_IS_GNUCC )
@@ -83,7 +83,7 @@ IF(${CMAKE_GENERATOR} STREQUAL "Unix Makefiles")
     ENDIF()
     TARGET_COMPILE_OPTIONS(debug PRIVATE -g)
     RUN_POST_BUILD_COMMANDS_DEFAULTS(debug)
-    ADD_RESOURCES_DIRECTORIES_TO_DIRECTORY_OF_PROJECT_BUILT(${nameOfProject} ${srcDir} "openclCodes")
+    ADD_RESOURCES_DIRECTORIES_TO_DIRECTORY_OF_PROJECT_BUILT(debug ${srcDir} "openclCodes")
     SET_DIRECTORY_PROPERTIES(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES build)    
 ENDIF()
 
